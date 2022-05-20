@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="393f0905-a9aa-40c9-b1b4-1275482f9cb1" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="29BjgLNRfFRC9R6VQkHzcQgDF0v" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="tests in cln_grpc_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/test/cln_grpc_test.dart" />
+      <option name="testName" value="cln_grpc_test.dart" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Dart Test.tests in cln_grpc_test.dart" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="393f0905-a9aa-40c9-b1b4-1275482f9cb1" name="Default Changelist" comment="" />
+      <created>1652593482990</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652593482990</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="727" y="258" width="530" height="605" key="FileChooserDialogImpl" timestamp="1653030531900">
+      <screen x="74" y="34" width="1846" height="1046" />
+    </state>
+    <state x="727" y="258" width="530" height="605" key="FileChooserDialogImpl/74.34.1846.1046@74.34.1846.1046" timestamp="1653030531900" />
+    <state width="1790" height="259" key="GridCell.Tab.0.bottom" timestamp="1652593764219">
+      <screen x="74" y="34" width="1846" height="1046" />
+    </state>
+    <state width="1790" height="259" key="GridCell.Tab.0.bottom/74.34.1846.1046@74.34.1846.1046" timestamp="1652593764219" />
+    <state width="1790" height="259" key="GridCell.Tab.0.center" timestamp="1652593764219">
+      <screen x="74" y="34" width="1846" height="1046" />
+    </state>
+    <state width="1790" height="259" key="GridCell.Tab.0.center/74.34.1846.1046@74.34.1846.1046" timestamp="1652593764219" />
+    <state width="1790" height="259" key="GridCell.Tab.0.left" timestamp="1652593764218">
+      <screen x="74" y="34" width="1846" height="1046" />
+    </state>
+    <state width="1790" height="259" key="GridCell.Tab.0.left/74.34.1846.1046@74.34.1846.1046" timestamp="1652593764218" />
+    <state width="1790" height="259" key="GridCell.Tab.0.right" timestamp="1652593764219">
+      <screen x="74" y="34" width="1846" height="1046" />
+    </state>
+    <state width="1790" height="259" key="GridCell.Tab.0.right/74.34.1846.1046@74.34.1846.1046" timestamp="1652593764219" />
+    <state x="361" y="104" width="1271" height="912" key="SettingsEditor" timestamp="1652977315866">
+      <screen x="74" y="34" width="1846" height="1046" />
+    </state>
+    <state x="361" y="104" width="1271" height="912" key="SettingsEditor/74.34.1846.1046@74.34.1846.1046" timestamp="1652977315866" />
+    <state x="174" y="134" width="1646" height="846" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1652816112884">
+      <screen x="74" y="34" width="1846" height="1046" />
+    </state>
+    <state x="174" y="134" width="1646" height="846" key="com.intellij.history.integration.ui.views.FileHistoryDialog/74.34.1846.1046@74.34.1846.1046" timestamp="1652816112884" />
+  </component>
+</project>
