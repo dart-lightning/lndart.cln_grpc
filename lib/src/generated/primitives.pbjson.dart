@@ -8,6 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+
 @$core.Deprecated('Use channelSideDescriptor instead')
 const ChannelSide$json = const {
   '1': 'ChannelSide',
@@ -18,7 +19,8 @@ const ChannelSide$json = const {
 };
 
 /// Descriptor for `ChannelSide`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List channelSideDescriptor = $convert.base64Decode('CgtDaGFubmVsU2lkZRIGCgJJThAAEgcKA09VVBAB');
+final $typed_data.Uint8List channelSideDescriptor =
+    $convert.base64Decode('CgtDaGFubmVsU2lkZRIGCgJJThAAEgcKA09VVBAB');
 @$core.Deprecated('Use channelStateDescriptor instead')
 const ChannelState$json = const {
   '1': 'ChannelState',
@@ -38,7 +40,8 @@ const ChannelState$json = const {
 };
 
 /// Descriptor for `ChannelState`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List channelStateDescriptor = $convert.base64Decode('CgxDaGFubmVsU3RhdGUSDAoIT3BlbmluZ2QQABIaChZDaGFubmVsZEF3YWl0aW5nTG9ja2luEAESEgoOQ2hhbm5lbGROb3JtYWwQAhIYChRDaGFubmVsZFNodXR0aW5nRG93bhADEhcKE0Nsb3NpbmdkU2lnZXhjaGFuZ2UQBBIUChBDbG9zaW5nZENvbXBsZXRlEAUSFgoSQXdhaXRpbmdVbmlsYXRlcmFsEAYSFAoQRnVuZGluZ1NwZW5kU2VlbhAHEgsKB09uY2hhaW4QCBIVChFEdWFsb3BlbmRPcGVuSW5pdBAJEhsKF0R1YWxvcGVuZEF3YWl0aW5nTG9ja2luEAo=');
+final $typed_data.Uint8List channelStateDescriptor = $convert.base64Decode(
+    'CgxDaGFubmVsU3RhdGUSDAoIT3BlbmluZ2QQABIaChZDaGFubmVsZEF3YWl0aW5nTG9ja2luEAESEgoOQ2hhbm5lbGROb3JtYWwQAhIYChRDaGFubmVsZFNodXR0aW5nRG93bhADEhcKE0Nsb3NpbmdkU2lnZXhjaGFuZ2UQBBIUChBDbG9zaW5nZENvbXBsZXRlEAUSFgoSQXdhaXRpbmdVbmlsYXRlcmFsEAYSFAoQRnVuZGluZ1NwZW5kU2VlbhAHEgsKB09uY2hhaW4QCBIVChFEdWFsb3BlbmRPcGVuSW5pdBAJEhsKF0R1YWxvcGVuZEF3YWl0aW5nTG9ja2luEAo=');
 @$core.Deprecated('Use amountDescriptor instead')
 const Amount$json = const {
   '1': 'Amount',
@@ -48,12 +51,21 @@ const Amount$json = const {
 };
 
 /// Descriptor for `Amount`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List amountDescriptor = $convert.base64Decode('CgZBbW91bnQSEgoEbXNhdBgBIAEoBFIEbXNhdA==');
+final $typed_data.Uint8List amountDescriptor =
+    $convert.base64Decode('CgZBbW91bnQSEgoEbXNhdBgBIAEoBFIEbXNhdA==');
 @$core.Deprecated('Use amountOrAllDescriptor instead')
 const AmountOrAll$json = const {
   '1': 'AmountOrAll',
   '2': const [
-    const {'1': 'amount', '3': 1, '4': 1, '5': 11, '6': '.cln.Amount', '9': 0, '10': 'amount'},
+    const {
+      '1': 'amount',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cln.Amount',
+      '9': 0,
+      '10': 'amount'
+    },
     const {'1': 'all', '3': 2, '4': 1, '5': 8, '9': 0, '10': 'all'},
   ],
   '8': const [
@@ -62,12 +74,21 @@ const AmountOrAll$json = const {
 };
 
 /// Descriptor for `AmountOrAll`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List amountOrAllDescriptor = $convert.base64Decode('CgtBbW91bnRPckFsbBIlCgZhbW91bnQYASABKAsyCy5jbG4uQW1vdW50SABSBmFtb3VudBISCgNhbGwYAiABKAhIAFIDYWxsQgcKBXZhbHVl');
+final $typed_data.Uint8List amountOrAllDescriptor = $convert.base64Decode(
+    'CgtBbW91bnRPckFsbBIlCgZhbW91bnQYASABKAsyCy5jbG4uQW1vdW50SABSBmFtb3VudBISCgNhbGwYAiABKAhIAFIDYWxsQgcKBXZhbHVl');
 @$core.Deprecated('Use amountOrAnyDescriptor instead')
 const AmountOrAny$json = const {
   '1': 'AmountOrAny',
   '2': const [
-    const {'1': 'amount', '3': 1, '4': 1, '5': 11, '6': '.cln.Amount', '9': 0, '10': 'amount'},
+    const {
+      '1': 'amount',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cln.Amount',
+      '9': 0,
+      '10': 'amount'
+    },
     const {'1': 'any', '3': 2, '4': 1, '5': 8, '9': 0, '10': 'any'},
   ],
   '8': const [
@@ -76,14 +97,16 @@ const AmountOrAny$json = const {
 };
 
 /// Descriptor for `AmountOrAny`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List amountOrAnyDescriptor = $convert.base64Decode('CgtBbW91bnRPckFueRIlCgZhbW91bnQYASABKAsyCy5jbG4uQW1vdW50SABSBmFtb3VudBISCgNhbnkYAiABKAhIAFIDYW55QgcKBXZhbHVl');
+final $typed_data.Uint8List amountOrAnyDescriptor = $convert.base64Decode(
+    'CgtBbW91bnRPckFueRIlCgZhbW91bnQYASABKAsyCy5jbG4uQW1vdW50SABSBmFtb3VudBISCgNhbnkYAiABKAhIAFIDYW55QgcKBXZhbHVl');
 @$core.Deprecated('Use channelStateChangeCauseDescriptor instead')
 const ChannelStateChangeCause$json = const {
   '1': 'ChannelStateChangeCause',
 };
 
 /// Descriptor for `ChannelStateChangeCause`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List channelStateChangeCauseDescriptor = $convert.base64Decode('ChdDaGFubmVsU3RhdGVDaGFuZ2VDYXVzZQ==');
+final $typed_data.Uint8List channelStateChangeCauseDescriptor =
+    $convert.base64Decode('ChdDaGFubmVsU3RhdGVDaGFuZ2VDYXVzZQ==');
 @$core.Deprecated('Use outpointDescriptor instead')
 const Outpoint$json = const {
   '1': 'Outpoint',
@@ -94,7 +117,8 @@ const Outpoint$json = const {
 };
 
 /// Descriptor for `Outpoint`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List outpointDescriptor = $convert.base64Decode('CghPdXRwb2ludBISCgR0eGlkGAEgASgMUgR0eGlkEhYKBm91dG51bRgCIAEoDVIGb3V0bnVt');
+final $typed_data.Uint8List outpointDescriptor = $convert.base64Decode(
+    'CghPdXRwb2ludBISCgR0eGlkGAEgASgMUgR0eGlkEhYKBm91dG51bRgCIAEoDVIGb3V0bnVt');
 @$core.Deprecated('Use feerateDescriptor instead')
 const Feerate$json = const {
   '1': 'Feerate',
@@ -111,49 +135,88 @@ const Feerate$json = const {
 };
 
 /// Descriptor for `Feerate`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List feerateDescriptor = $convert.base64Decode('CgdGZWVyYXRlEhQKBHNsb3cYASABKAhIAFIEc2xvdxIYCgZub3JtYWwYAiABKAhIAFIGbm9ybWFsEhgKBnVyZ2VudBgDIAEoCEgAUgZ1cmdlbnQSFgoFcGVya2IYBCABKA1IAFIFcGVya2ISFgoFcGVya3cYBSABKA1IAFIFcGVya3dCBwoFc3R5bGU=');
+final $typed_data.Uint8List feerateDescriptor = $convert.base64Decode(
+    'CgdGZWVyYXRlEhQKBHNsb3cYASABKAhIAFIEc2xvdxIYCgZub3JtYWwYAiABKAhIAFIGbm9ybWFsEhgKBnVyZ2VudBgDIAEoCEgAUgZ1cmdlbnQSFgoFcGVya2IYBCABKA1IAFIFcGVya2ISFgoFcGVya3cYBSABKA1IAFIFcGVya3dCBwoFc3R5bGU=');
 @$core.Deprecated('Use outputDescDescriptor instead')
 const OutputDesc$json = const {
   '1': 'OutputDesc',
   '2': const [
     const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
-    const {'1': 'amount', '3': 2, '4': 1, '5': 11, '6': '.cln.Amount', '10': 'amount'},
+    const {
+      '1': 'amount',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.cln.Amount',
+      '10': 'amount'
+    },
   ],
 };
 
 /// Descriptor for `OutputDesc`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List outputDescDescriptor = $convert.base64Decode('CgpPdXRwdXREZXNjEhgKB2FkZHJlc3MYASABKAlSB2FkZHJlc3MSIwoGYW1vdW50GAIgASgLMgsuY2xuLkFtb3VudFIGYW1vdW50');
+final $typed_data.Uint8List outputDescDescriptor = $convert.base64Decode(
+    'CgpPdXRwdXREZXNjEhgKB2FkZHJlc3MYASABKAlSB2FkZHJlc3MSIwoGYW1vdW50GAIgASgLMgsuY2xuLkFtb3VudFIGYW1vdW50');
 @$core.Deprecated('Use routeHopDescriptor instead')
 const RouteHop$json = const {
   '1': 'RouteHop',
   '2': const [
     const {'1': 'id', '3': 1, '4': 1, '5': 12, '10': 'id'},
-    const {'1': 'short_channel_id', '3': 2, '4': 1, '5': 9, '10': 'shortChannelId'},
-    const {'1': 'feebase', '3': 3, '4': 1, '5': 11, '6': '.cln.Amount', '10': 'feebase'},
+    const {
+      '1': 'short_channel_id',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'shortChannelId'
+    },
+    const {
+      '1': 'feebase',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.cln.Amount',
+      '10': 'feebase'
+    },
     const {'1': 'feeprop', '3': 4, '4': 1, '5': 13, '10': 'feeprop'},
     const {'1': 'expirydelta', '3': 5, '4': 1, '5': 13, '10': 'expirydelta'},
   ],
 };
 
 /// Descriptor for `RouteHop`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List routeHopDescriptor = $convert.base64Decode('CghSb3V0ZUhvcBIOCgJpZBgBIAEoDFICaWQSKAoQc2hvcnRfY2hhbm5lbF9pZBgCIAEoCVIOc2hvcnRDaGFubmVsSWQSJQoHZmVlYmFzZRgDIAEoCzILLmNsbi5BbW91bnRSB2ZlZWJhc2USGAoHZmVlcHJvcBgEIAEoDVIHZmVlcHJvcBIgCgtleHBpcnlkZWx0YRgFIAEoDVILZXhwaXJ5ZGVsdGE=');
+final $typed_data.Uint8List routeHopDescriptor = $convert.base64Decode(
+    'CghSb3V0ZUhvcBIOCgJpZBgBIAEoDFICaWQSKAoQc2hvcnRfY2hhbm5lbF9pZBgCIAEoCVIOc2hvcnRDaGFubmVsSWQSJQoHZmVlYmFzZRgDIAEoCzILLmNsbi5BbW91bnRSB2ZlZWJhc2USGAoHZmVlcHJvcBgEIAEoDVIHZmVlcHJvcBIgCgtleHBpcnlkZWx0YRgFIAEoDVILZXhwaXJ5ZGVsdGE=');
 @$core.Deprecated('Use routehintDescriptor instead')
 const Routehint$json = const {
   '1': 'Routehint',
   '2': const [
-    const {'1': 'hops', '3': 1, '4': 3, '5': 11, '6': '.cln.RouteHop', '10': 'hops'},
+    const {
+      '1': 'hops',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.cln.RouteHop',
+      '10': 'hops'
+    },
   ],
 };
 
 /// Descriptor for `Routehint`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List routehintDescriptor = $convert.base64Decode('CglSb3V0ZWhpbnQSIQoEaG9wcxgBIAMoCzINLmNsbi5Sb3V0ZUhvcFIEaG9wcw==');
+final $typed_data.Uint8List routehintDescriptor = $convert.base64Decode(
+    'CglSb3V0ZWhpbnQSIQoEaG9wcxgBIAMoCzINLmNsbi5Sb3V0ZUhvcFIEaG9wcw==');
 @$core.Deprecated('Use routehintListDescriptor instead')
 const RoutehintList$json = const {
   '1': 'RoutehintList',
   '2': const [
-    const {'1': 'hints', '3': 2, '4': 3, '5': 11, '6': '.cln.Routehint', '10': 'hints'},
+    const {
+      '1': 'hints',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.cln.Routehint',
+      '10': 'hints'
+    },
   ],
 };
 
 /// Descriptor for `RoutehintList`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List routehintListDescriptor = $convert.base64Decode('Cg1Sb3V0ZWhpbnRMaXN0EiQKBWhpbnRzGAIgAygLMg4uY2xuLlJvdXRlaGludFIFaGludHM=');
+final $typed_data.Uint8List routehintListDescriptor = $convert.base64Decode(
+    'Cg1Sb3V0ZWhpbnRMaXN0EiQKBWhpbnRzGAIgAygLMg4uY2xuLlJvdXRlaGludFIFaGludHM=');
