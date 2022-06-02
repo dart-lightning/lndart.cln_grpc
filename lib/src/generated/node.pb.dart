@@ -10,10 +10,10 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'package:cln_grpc/src/generatedPrimitives/primitives.pb.dart' as $1;
+import 'package:cln_grpc/src/generated/primitives.pb.dart' as $1;
 
 import 'node.pbenum.dart';
-import 'package:cln_grpc/src/generatedPrimitives/primitives.pbenum.dart' as $1;
+import 'package:cln_grpc/src/generated/primitives.pbenum.dart' as $1;
 
 export 'node.pbenum.dart';
 

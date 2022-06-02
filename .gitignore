@@ -1,0 +1,7 @@
+# Android/
+.dart_tool/
+.packages/
+.idea/
+
+# All Client certificates should be here
+assets/

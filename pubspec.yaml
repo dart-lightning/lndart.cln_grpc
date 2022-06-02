@@ -10,8 +10,33 @@ environment:
 # dependencies:
 #   path: ^1.8.0
 
-dev_dependencies:
+dependencies:
+  flutter:
+    sdk: flutter
+
   lints: ^1.0.0
   test: ^1.16.0
   grpc:
   protobuf:
+  dio: ^4.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+#  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+   assets:
+     - assets/ca.pem
+     - assets/client-key.pem
+     - assets/client.pem
