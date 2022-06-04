@@ -1,7 +1,4 @@
-# Android/
 .dart_tool/
-.packages/
+.packages
 .idea/
-
-# All Client certificates should be here
-assets/
+.pubspec.lock
