@@ -34,11 +34,12 @@ class LoadTLSChannelCredentials extends ChannelCredentials {
 class Client {
   late ClientChannel channel;
   late NodeClient stub; // stub will know all functions of the server
+
   Future<void> main(String path) async {
     final cred = LoadTLSChannelCredentials(
-      trustedRoots: File(path+'/ca.pem').readAsBytesSync(),
-      certificateChain: File(path+'/client.pem').readAsBytesSync(),
-      privateKey: File(path+'/client-key.pem').readAsBytesSync(),
+      trustedRoots: File('$path/ca.pem').readAsBytesSync(),
+      certificateChain: File('$path/client.pem').readAsBytesSync(),
+      privateKey: File('$path/client-key.pem').readAsBytesSync(),
       authority: 'localhost',
     );
     channel = ClientChannel('localhost',
@@ -53,6 +54,19 @@ class Client {
 }
 
 Future<void> main(List<String> args) async {
+  if(args.length==0) {
+    print("Error: Certificate path not found");
+    print("dart [/client] [/path to certificates]");
+    return;
+  }
+  var path = args[0];
+  if(path.isNotEmpty){
+    if(await File("$path/ca.pem").exists() && await File("$path/client.pem").exists() && await File("$path/client-key.pem").exists()){}
+    else{
+      print("Error: Certificates not found in the given Path");
+      return ;
+    }
+  }
   var client = Client();
-  await client.main(args[0]);
+  await client.main(path);
 }

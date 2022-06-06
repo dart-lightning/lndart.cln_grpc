@@ -10,5 +10,4 @@ export 'src/generated/node.pbgrpc.dart';
 export 'src/generated/primitives.pb.dart';
 export 'src/generated/primitives.pbgrpc.dart';
 
-
 // TODO: Export any libraries intended for clients of this package.
