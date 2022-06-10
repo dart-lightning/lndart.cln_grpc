@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:cln_grpc/src/generated/node.pbgrpc.dart';
@@ -27,46 +28,49 @@ class LoadTLSChannelCredentials extends ChannelCredentials {
     if (privateKey != null) {
       ctx!.usePrivateKeyBytes(privateKey!);
     }
-    return ctx;
+    return ctx!;
   }
 }
 
-class Client {
-  late ClientChannel channel;
-  late NodeClient stub; // stub will know all functions of the server
+class GRPCClient {
+  String rootPath;// path for the certificates
+  String? certClientPath;
+  var opts;
 
-  Future<void> main(String path) async {
+  late ClientChannel channel;
+  /// stub will know all functions of the server
+  late NodeClient stub;
+
+  GRPCClient(
+      {required this.rootPath,
+      this.certClientPath,
+      this.opts = const ChannelCredentials.insecure()})  {
+    //TODO init client here with the not null option
     final cred = LoadTLSChannelCredentials(
-      trustedRoots: File('$path/ca.pem').readAsBytesSync(),
-      certificateChain: File('$path/client.pem').readAsBytesSync(),
-      privateKey: File('$path/client-key.pem').readAsBytesSync(),
+      trustedRoots: File('$rootPath/ca.pem').readAsBytesSync(),
+      certificateChain: File('$rootPath/client.pem').readAsBytesSync(),
+      privateKey: File('$rootPath/client-key.pem').readAsBytesSync(),
       authority: 'localhost',
     );
     channel = ClientChannel('localhost',
         port: 8001, options: ChannelOptions(credentials: cred));
     stub = NodeClient(channel);
     print("Client Successfully Connected to Lightning Server");
-    var response = await stub.getinfo(GetinfoRequest()); // request to server
-    print("Response from Server");
-    print(response);
-    await channel.shutdown();
   }
-}
 
-Future<void> main(List<String> args) async {
-  if(args.length==0) {
-    print("Error: Certificate path not found");
-    print("dart [/client] [/path to certificates]");
-    return;
+  Future<GetinfoResponse> getinfo() async {
+    var response = await stub.getinfo(GetinfoRequest()); // request to server
+    return response;
   }
-  var path = args[0];
-  if(path.isNotEmpty){
-    if(await File("$path/ca.pem").exists() && await File("$path/client.pem").exists() && await File("$path/client-key.pem").exists()){}
-    else{
-      print("Error: Certificates not found in given Path");
-      return ;
-    }
+
+  @override
+  void close() async {
+    channel.shutdown();
+    print("Client Shutdown");
   }
-  var client = Client();
-  await client.main(path);
+
+  // This is Vincent dream!
+  // Future<T> call<T>({required String method, payload = HashMap<String,dynamic>}) async {
+  //   return ;
+  // }
 }
