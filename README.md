@@ -1,39 +1,91 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+<div align="center">
+  <h1>lndart.cln_grp</h1>
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+  <img src="https://github.com/dart-lightning/icons/raw/main/main/res/mipmap-xxxhdpi/ic_launcher.png" />
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+  <p>
+    <strong> :dart: Dart GRPC client for core lightning :dart: </strong>
+  </p>
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+  <p>
+   <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/dart-lightning/lndart.cln_grpc/cln_grpc%20dart%20code%20sanity%20check?style=flat-square">
+  </p>
 
-## Features
+  <h4>
+    <a href="https://github.com/dart-lightning">Project Homepage</a>
+  </h4>
+</div>
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Table of Content
 
-## Getting started
+- Introduction
+- How to Use
+- How Contribute
+- License
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Introduction
 
-## Usage
+The repository is managed as monorepo, and it contains the following packages:
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+- clightning_rpc: The RPC wrapper around the core lightning API.
+- cln_plugin: A library to write extensible plugin in dart for core lightning.
+
+## How to Use
 
 ```dart
-const like = 'sample';
+import 'package:cln_grpc/cln_grpc.dart';
+
+Future<void> main(List<String> args) async {
+  var client = GRPCClient(rootPath: args[0], certClientPath: "/");
+  var response = await client.getinfo();
+  print('Response from server\n$response');
+  client.close();
+}
 ```
 
-## Additional information
+## How Contribute
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+### Build system
+
+You can use the make file to make sure that your code can pass the sanity code check of the CI:
+
+The make file contains the following target:
+
+- `make`: formatting, analyze and compile the code;
+- `make fmt`: formatting and analyze the code;
+- `make check`: run the unit test (if any)
+
+Read out [Hacking guide](#TODO) to find and learn on how we manage the change request (Pull request) workflow.
+
+## License
+
+<div align="center">
+  <img src="https://opensource.org/files/osi_keyhole_300X300_90ppi_0.png" width="150" height="150"/>
+</div>
+
+```
+Copyright 2022 Vincenzo Palazzo <vincenzopalazzodev@gmail.com>. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+    * Neither the name of Google Inc. nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
