@@ -1,4 +1,3 @@
-import 'dart:collection';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:cln_grpc/src/generated/node.pbgrpc.dart';
@@ -36,7 +35,7 @@ class GRPCClient {
   /// path for the certificates
   String rootPath;
   String? certClientPath;
-  var opts;
+  ChannelCredentials opts;
 
   late ClientChannel channel;
 
@@ -66,7 +65,6 @@ class GRPCClient {
     return response;
   }
 
-  @override
   void close() async {
     channel.shutdown();
     print("Client Shutdown");

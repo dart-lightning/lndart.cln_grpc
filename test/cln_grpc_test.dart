@@ -1,4 +1,3 @@
-import 'package:cln_grpc/cln_grpc.dart';
 import 'package:test/test.dart';
 
 void main() {
