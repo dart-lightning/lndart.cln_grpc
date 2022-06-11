@@ -1,4 +1,4 @@
-name: graphql Dart Code sanity check
+name: cln_grpc dart code sanity check
 
 on: [push, pull_request]
 
