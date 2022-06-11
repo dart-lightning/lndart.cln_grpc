@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:cln_grpc/cln_grpc.dart';
 
 Future<void> main(List<String> args) async {
