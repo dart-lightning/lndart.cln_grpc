@@ -39,13 +39,14 @@ class GRPCClient {
   var opts;
 
   late ClientChannel channel;
+
   /// stub will know all functions of the server
   late NodeClient stub;
 
   GRPCClient(
       {required this.rootPath,
       this.certClientPath,
-      this.opts = const ChannelCredentials.insecure()})  {
+      this.opts = const ChannelCredentials.insecure()}) {
     //TODO init client here with the not null option
     final cred = LoadTLSChannelCredentials(
       trustedRoots: File('$rootPath/ca.pem').readAsBytesSync(),

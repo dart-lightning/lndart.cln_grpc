@@ -16,8 +16,8 @@ gen:
 	$(CC) run build_runner build
 
 clean:
-	find . -name "*.graphql.dart" -type f -delete
-	find . -name "*.graphql.g.dart" -type f -delete
+	find . -name "*.pb.dart" -type f -delete
+	find . -name "*.pbjson.g.dart" -type f -delete
 
 check:
 	$(CC) test
