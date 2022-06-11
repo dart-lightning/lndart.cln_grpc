@@ -6,7 +6,6 @@ library cln_grpc;
 export 'src/cln_grpc_base.dart';
 
 export 'src/grpc_client.dart';
-
 export 'src/generated/node.pb.dart';
 export 'src/generated/node.pbgrpc.dart';
 export 'src/generated/primitives.pb.dart';

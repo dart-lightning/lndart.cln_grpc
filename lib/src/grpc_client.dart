@@ -33,7 +33,8 @@ class LoadTLSChannelCredentials extends ChannelCredentials {
 }
 
 class GRPCClient {
-  String rootPath;// path for the certificates
+  /// path for the certificates
+  String rootPath;
   String? certClientPath;
   var opts;
 
@@ -59,7 +60,8 @@ class GRPCClient {
   }
 
   Future<GetinfoResponse> getinfo() async {
-    var response = await stub.getinfo(GetinfoRequest()); // request to server
+    /// request to server
+    var response = await stub.getinfo(GetinfoRequest());
     return response;
   }
 
