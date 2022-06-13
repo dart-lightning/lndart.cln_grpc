@@ -56,6 +56,19 @@ The make file contains the following target:
 - `make check`: run the unit test (if any)
 
 Read out [Hacking guide](#TODO) to find and learn on how we manage the change request (Pull request) workflow.
+### Generation Code
+
+In order to run the client we need to generate some dart files from the proto files of the server.
+
+Here are the steps to generate `.pb.dart` files:
+- Be on the root of the project.
+- Run this command `protoc --dart_out=grpc:./lib/src/ ./protos/primitives.proto ./protos/node.proto` to generate the `.pb.dart` files for both `/primitives.proto` and `/node.proto`.
+- Rename `./lib/src/protos` to `./lib/src/generated`.
+
+Requirements:
+- Upgrade protobuf version equal or above [release 3.15.](https://github.com/protocolbuffers/protobuf/releases/tag/v3.15.0)
+- Add `protoc-gen-dart` in your path.
+- Or else add `--plugin=protoc-gen-dart=/path to/protoc-gen-dart` flag in the command.
 
 ## License
 
