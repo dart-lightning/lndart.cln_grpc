@@ -14,6 +14,7 @@ fmt:
 
 gen:
 	$(CC) run build_runner build
+	protoc --dart_out=grpc:./lib/src/ ./protos/primitives.proto ./protos/node.proto
 
 clean:
 	find . -name "*.pb.dart" -type f -delete
