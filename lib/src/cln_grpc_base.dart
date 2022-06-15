@@ -73,8 +73,14 @@ class GRPCClient {
     print("Client Shutdown");
   }
 
-// This is Vincent dream!
-// Future<T> call<T>({required String method, payload = HashMap<String,dynamic>}) async {
-//   return ;
-// }
+  /// generic call method that is able to call any type of GRPC method, and allow
+  /// us to make the interface equal to the dart.clightning package
+  Future<T> call<R, T>({required String method, required R payload}) async {
+    switch (method) {
+      case "getinfo":
+        return await stub.getinfo(payload as GetinfoRequest) as T;
+    }
+    throw Exception(
+        "method $method not found, report a issue on Github or try to use client.stub to use the raw grpc client");
+  }
 }
