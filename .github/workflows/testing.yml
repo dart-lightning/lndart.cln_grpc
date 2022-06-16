@@ -10,4 +10,4 @@ jobs:
       - name: Integration testing
         run: |
           cd docker
-          docker-compose up --exit-code-from cln --quiet-pull
+          docker-compose up --exit-code-from grpc_test --quiet-pull
