@@ -20,4 +20,4 @@ clean:
 	find . -name "*.pbjson.g.dart" -type f -delete
 
 check:
-	$(CC) test
+	$(CC) test test
