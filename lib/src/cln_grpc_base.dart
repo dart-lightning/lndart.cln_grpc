@@ -35,9 +35,9 @@ class LoadTLSChannelCredentials extends ChannelCredentials {
 
 /// TODO add some docs
 class GRPCClient {
-
   String host;
   int port;
+
   /// path for the certificates
   String rootPath;
   String? certClientPath;
@@ -49,10 +49,10 @@ class GRPCClient {
   late NodeClient stub;
 
   GRPCClient(
-      { required this.rootPath,
+      {required this.rootPath,
       this.certClientPath,
-        this.host='localhost',
-        this.port=8001,
+      this.host = 'localhost',
+      this.port = 8001,
       this.opts = const ChannelCredentials.insecure()}) {
     //TODO init client here with the not null option
     final cred = LoadTLSChannelCredentials(
