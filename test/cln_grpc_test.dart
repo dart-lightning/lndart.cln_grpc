@@ -1,13 +1,16 @@
+import 'dart:io';
+
+import 'package:cln_grpc/cln_grpc.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('A group of tests', () {
-    setUp(() {
-      // Additional setup goes here.
-    });
-
-    test('Fake Test', () {
-      expect(true, isTrue);
+  var env = Platform.environment;
+  var tlsPath = env['TLS_PATH']!;
+  group('GRPC servers', () {
+    test('call get info through the GRPC server', () async {
+      var client = GRPCClient(rootPath: tlsPath);
+      var response = await client.getinfo();
+      expect(response, isNotNull);
     });
   });
 }
