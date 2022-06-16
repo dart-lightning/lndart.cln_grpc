@@ -2,3 +2,4 @@
 .packages
 .idea/
 pubspec.lock
+docker/data
