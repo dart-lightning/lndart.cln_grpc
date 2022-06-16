@@ -35,6 +35,9 @@ class LoadTLSChannelCredentials extends ChannelCredentials {
 
 /// TODO add some docs
 class GRPCClient {
+  String host;
+  int port;
+
   /// path for the certificates
   String rootPath;
   String? certClientPath;
@@ -48,16 +51,18 @@ class GRPCClient {
   GRPCClient(
       {required this.rootPath,
       this.certClientPath,
+      this.host = 'localhost',
+      this.port = 8001,
       this.opts = const ChannelCredentials.insecure()}) {
     //TODO init client here with the not null option
     final cred = LoadTLSChannelCredentials(
       trustedRoots: File('$rootPath/ca.pem').readAsBytesSync(),
       certificateChain: File('$rootPath/client.pem').readAsBytesSync(),
       privateKey: File('$rootPath/client-key.pem').readAsBytesSync(),
-      authority: 'localhost',
+      authority: host,
     );
-    channel = ClientChannel('localhost',
-        port: 8001, options: ChannelOptions(credentials: cred));
+    channel = ClientChannel(host,
+        port: port, options: ChannelOptions(credentials: cred));
     stub = NodeClient(channel);
     print("Client Successfully Connected to Lightning Server");
   }
