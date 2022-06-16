@@ -11,6 +11,7 @@ void main() {
       var client = GRPCClient(rootPath: tlsPath);
       var response = await client.getinfo();
       expect(response, isNotNull);
+      expect(response.alias, "clighting4j-node");
     });
   });
 }
