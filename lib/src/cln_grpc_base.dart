@@ -84,14 +84,14 @@ class GRPCClient {
     switch (method) {
       case "getinfo":
         return await stub.getinfo(payload as GetinfoRequest) as T;
-      case "listTransactions":
+      case "listtransactions":
         return await stub.listTransactions(payload as ListtransactionsRequest)
             as T;
-      case "listFunds":
+      case "listfunds":
         return await stub.listFunds(payload as ListfundsRequest) as T;
-      case "listPeers":
+      case "listpeers":
         return await stub.listPeers(payload as ListpeersRequest) as T;
-      case "listChannels":
+      case "listchannels":
         return await stub.listChannels(payload as ListchannelsRequest) as T;
     }
     throw Exception(
