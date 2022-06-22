@@ -84,6 +84,15 @@ class GRPCClient {
     switch (method) {
       case "getinfo":
         return await stub.getinfo(payload as GetinfoRequest) as T;
+      case "listTransactions":
+        return await stub.listTransactions(payload as ListtransactionsRequest)
+            as T;
+      case "listFunds":
+        return await stub.listFunds(payload as ListfundsRequest) as T;
+      case "listPeers":
+        return await stub.listPeers(payload as ListpeersRequest) as T;
+      case "listChannels":
+        return await stub.listChannels(payload as ListchannelsRequest) as T;
     }
     throw Exception(
         "method $method not found, report a issue on Github or try to use client.stub to use the raw grpc client");
