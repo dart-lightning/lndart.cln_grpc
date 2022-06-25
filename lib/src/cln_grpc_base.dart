@@ -1,6 +1,7 @@
 /// TODO: add some docs
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:cln_common/cln_common.dart';
 import 'package:cln_grpc/src/generated/node.pbgrpc.dart';
 import 'package:grpc/grpc.dart';
 
@@ -34,7 +35,7 @@ class LoadTLSChannelCredentials extends ChannelCredentials {
 }
 
 /// TODO add some docs
-class GRPCClient {
+class GRPCClient extends LightningClient {
   String host;
   int port;
 
@@ -64,7 +65,6 @@ class GRPCClient {
     channel = ClientChannel(host,
         port: port, options: ChannelOptions(credentials: cred));
     stub = NodeClient(channel);
-    print("Client Successfully Connected to Lightning Server");
   }
 
   Future<GetinfoResponse> getinfo() async {
@@ -73,28 +73,45 @@ class GRPCClient {
     return response;
   }
 
-  void close() async {
-    channel.shutdown();
-    print("Client Shutdown");
+  @override
+  Future<void> close() async {
+    await channel.shutdown();
   }
 
   /// generic call method that is able to call any type of GRPC method, and allow
   /// us to make the interface equal to the dart.clightning package
-  Future<T> call<R, T>({required String method, required R payload}) async {
+  @override
+  Future<T> call<R extends Serializable, T>(
+      {required String method,
+      required R params,
+      T Function(Map)? onDecode}) async {
     switch (method) {
       case "getinfo":
-        return await stub.getinfo(payload as GetinfoRequest) as T;
+        return await stub.getinfo(params.as<GetinfoRequest>()) as T;
       case "listtransactions":
-        return await stub.listTransactions(payload as ListtransactionsRequest)
+        return await stub.listTransactions(params.as<ListtransactionsRequest>())
             as T;
       case "listfunds":
-        return await stub.listFunds(payload as ListfundsRequest) as T;
+        return await stub.listFunds(params.as<ListfundsRequest>()) as T;
       case "listpeers":
-        return await stub.listPeers(payload as ListpeersRequest) as T;
+        return await stub.listPeers(params.as<ListpeersRequest>()) as T;
       case "listchannels":
-        return await stub.listChannels(payload as ListchannelsRequest) as T;
+        return await stub.listChannels(params.as<ListchannelsRequest>()) as T;
     }
     throw Exception(
         "method $method not found, report a issue on Github or try to use client.stub to use the raw grpc client");
+  }
+
+  @override
+  LightningClient connect(String url) {
+    // TODO: implement connect
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Map<String, dynamic>> simpleCall(String method,
+      {Map<String, dynamic> params = const {}}) {
+    // TODO: implement simpleCall
+    throw UnimplementedError();
   }
 }

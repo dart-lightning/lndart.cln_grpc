@@ -3,6 +3,8 @@ description: A starting point for Dart libraries or applications.
 version: 1.0.0
 # homepage: https://www.example.com
 
+publish_to: none
+
 environment:
   sdk: '>=2.16.2 <3.0.0'
 
@@ -10,6 +12,10 @@ environment:
 dependencies:
   grpc: ^3.0.2
   protobuf: ^2.0.1
+  cln_common:
+    git:
+      url: https://github.com/dart-lightning/lndart.clightning.git
+      path: packages/cln_common
 
 dev_dependencies:
   lints: ^1.0.0
