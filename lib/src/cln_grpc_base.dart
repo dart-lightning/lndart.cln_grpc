@@ -1,4 +1,5 @@
 /// TODO: add some docs
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:cln_common/cln_common.dart';
@@ -75,7 +76,7 @@ class GRPCClient extends LightningClient {
     /// request to server
     var response = await stub.getinfo(params);
     if (onDecode != null) {
-      return onDecode(response.writeToJsonMap());
+      return onDecode(toEncode(response.toProto3Json()));
     }
     return response as T;
   }
@@ -86,7 +87,7 @@ class GRPCClient extends LightningClient {
     /// request to server
     var response = await stub.listTransactions(params);
     if (onDecode != null) {
-      return onDecode(response.writeToJsonMap());
+      return onDecode(toEncode(response.toProto3Json()));
     }
     return response as T;
   }
@@ -96,7 +97,7 @@ class GRPCClient extends LightningClient {
     /// request to server
     var response = await stub.listFunds(params);
     if (onDecode != null) {
-      return onDecode(response.writeToJsonMap());
+      return onDecode(toEncode(response.toProto3Json()));
     }
     return response as T;
   }
@@ -106,7 +107,7 @@ class GRPCClient extends LightningClient {
     /// request to server
     var response = await stub.listPeers(params);
     if (onDecode != null) {
-      return onDecode(response.writeToJsonMap());
+      return onDecode(toEncode(response.toProto3Json()));
     }
     return response as T;
   }
@@ -116,9 +117,15 @@ class GRPCClient extends LightningClient {
     /// request to server
     var response = await stub.listChannels(params);
     if (onDecode != null) {
-      return onDecode(response.writeToJsonMap());
+      return onDecode(toEncode(response.toProto3Json()));
     }
     return response as T;
+  }
+
+  // FIXME: this is a terrible ack inside the code, but we need to check
+  // if the toProto3Json can me converted inside a map with a cast.
+  Map<String, dynamic> toEncode(dynamic toEncode) {
+    return jsonDecode(jsonEncode(toEncode));
   }
 
   /// generic call method that is able to call any type of GRPC method, and allow
