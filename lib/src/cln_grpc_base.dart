@@ -37,11 +37,13 @@ class LoadTLSChannelCredentials extends ChannelCredentials {
 /// TODO add some docs
 class GRPCClient extends LightningClient {
   String host;
+  String authority;
   int port;
 
   /// path for the certificates
   String rootPath;
   String? certClientPath;
+  // FIXME: remove this because is used only inside the constructor
   ChannelCredentials opts;
 
   late ClientChannel channel;
@@ -53,9 +55,10 @@ class GRPCClient extends LightningClient {
       {required this.rootPath,
       this.certClientPath,
       this.host = 'localhost',
+      this.authority = 'localhost',
       this.port = 8001,
       this.opts = const ChannelCredentials.insecure()}) {
-    //TODO init client here with the not null option
+    // FIXME: take in consideration the input option
     final cred = LoadTLSChannelCredentials(
       trustedRoots: File('$rootPath/ca.pem').readAsBytesSync(),
       certificateChain: File('$rootPath/client.pem').readAsBytesSync(),
@@ -67,15 +70,13 @@ class GRPCClient extends LightningClient {
     stub = NodeClient(channel);
   }
 
-  Future<GetinfoResponse> getinfo() async {
+  Future<GetinfoResponse> getInfo({dynamic Function(Map)? onDecode}) async {
     /// request to server
     var response = await stub.getinfo(GetinfoRequest());
+    if (onDecode != null) {
+      return onDecode(response.writeToJsonMap());
+    }
     return response;
-  }
-
-  @override
-  Future<void> close() async {
-    await channel.shutdown();
   }
 
   /// generic call method that is able to call any type of GRPC method, and allow
@@ -87,7 +88,7 @@ class GRPCClient extends LightningClient {
       T Function(Map)? onDecode}) async {
     switch (method) {
       case "getinfo":
-        return await stub.getinfo(params.as<GetinfoRequest>()) as T;
+        return await getInfo(onDecode: onDecode) as T;
       case "listtransactions":
         return await stub.listTransactions(params.as<ListtransactionsRequest>())
             as T;
@@ -104,8 +105,12 @@ class GRPCClient extends LightningClient {
 
   @override
   LightningClient connect(String url) {
-    // TODO: implement connect
-    throw UnimplementedError();
+    return this;
+  }
+
+  @override
+  Future<void> close() async {
+    await channel.shutdown();
   }
 
   @override
