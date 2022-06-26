@@ -60,6 +60,15 @@ void main() {
       await client.close();
     });
 
+    test('call get info through generic client with custom return type', () async {
+      var client = GRPCClient(rootPath: tlsPath);
+      var response = await client.call<GetInfoProxy, dynamic>(
+          method: "getinfo", params: GetInfoProxy.build(), onDecode: (data) => data);
+      expect(response, isNotNull);
+      expect(response["alias"]!, "clighting4j-node");
+      await client.close();
+    });
+    
     test('call list transaction through generic client', () async {
       var client = GRPCClient(rootPath: tlsPath);
       var response =
