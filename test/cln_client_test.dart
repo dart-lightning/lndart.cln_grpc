@@ -57,6 +57,7 @@ void main() {
           method: "getinfo", params: GetInfoProxy.build());
       expect(response, isNotNull);
       expect(response.alias, "clighting4j-node");
+      await client.close();
     });
 
     test('call list transaction through generic client', () async {
@@ -66,6 +67,7 @@ void main() {
               method: "listtransactions", params: ListTransactionProxy.build());
       expect(response, isNotNull);
       expect(response.transactions.isEmpty, isTrue);
+      await client.close();
     });
 
     test('call list channels through generic client', () async {
@@ -74,6 +76,7 @@ void main() {
           method: "listchannels", params: ListChannelProxy.build());
       expect(response, isNotNull);
       expect(response.channels.isEmpty, isTrue);
+      await client.close();
     });
   });
 }
