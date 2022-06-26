@@ -9,7 +9,7 @@ void main() {
   group('GRPC servers', () {
     test('call get info through the GRPC server', () async {
       var client = GRPCClient(rootPath: tlsPath);
-      var response = await client.getInfo();
+      var response = await client.getInfo(params: GetinfoRequest());
       expect(response, isNotNull);
       expect(response.alias, "clighting4j-node");
       await client.close();
