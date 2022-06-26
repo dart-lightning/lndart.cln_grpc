@@ -67,6 +67,7 @@ void main() {
           method: "getinfo",
           params: GetInfoProxy.build(),
           onDecode: (data) => data);
+      LogManager.getInstance.debug("$response");
       expect(response, isNotNull);
       expect(response["alias"]!, "clighting4j-node");
       await client.close();
