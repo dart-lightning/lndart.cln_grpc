@@ -18,7 +18,7 @@ class ListTransactionProxy extends Serializable {
 
 Future<void> main(List<String> args) async {
   var client = GRPCClient(rootPath: args[0]);
-  var response = await client.getInfo();
+  var response = await client.getInfo(params: GetinfoRequest());
   print('Response from server\n$response');
 
   /// It is possible also use the generic call like

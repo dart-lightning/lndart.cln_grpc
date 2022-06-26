@@ -70,13 +70,55 @@ class GRPCClient extends LightningClient {
     stub = NodeClient(channel);
   }
 
-  Future<GetinfoResponse> getInfo({dynamic Function(Map)? onDecode}) async {
+  Future<T> getInfo<T>(
+      {required GetinfoRequest params, T Function(Map)? onDecode}) async {
     /// request to server
-    var response = await stub.getinfo(GetinfoRequest());
+    var response = await stub.getinfo(params);
     if (onDecode != null) {
       return onDecode(response.writeToJsonMap());
     }
-    return response;
+    return response as T;
+  }
+
+  Future<T> listTransactions<T>(
+      {required ListtransactionsRequest params,
+      T Function(Map)? onDecode}) async {
+    /// request to server
+    var response = await stub.listTransactions(params);
+    if (onDecode != null) {
+      return onDecode(response.writeToJsonMap());
+    }
+    return response as T;
+  }
+
+  Future<T> listFunds<T>(
+      {required ListfundsRequest params, T Function(Map)? onDecode}) async {
+    /// request to server
+    var response = await stub.listFunds(params);
+    if (onDecode != null) {
+      return onDecode(response.writeToJsonMap());
+    }
+    return response as T;
+  }
+
+  Future<T> listPeers<T>(
+      {required ListpeersRequest params, T Function(Map)? onDecode}) async {
+    /// request to server
+    var response = await stub.listPeers(params);
+    if (onDecode != null) {
+      return onDecode(response.writeToJsonMap());
+    }
+    return response as T;
+  }
+
+  Future<T> listChannels<T>(
+      {required ListchannelsRequest params, T Function(Map)? onDecode}) async {
+    /// request to server
+    var response = await stub.listChannels(params);
+    if (onDecode != null) {
+      return onDecode(response.writeToJsonMap());
+    }
+    return response as T;
   }
 
   /// generic call method that is able to call any type of GRPC method, and allow
@@ -88,16 +130,20 @@ class GRPCClient extends LightningClient {
       T Function(Map)? onDecode}) async {
     switch (method) {
       case "getinfo":
-        return await getInfo(onDecode: onDecode) as T;
+        return await getInfo<T>(
+            params: params.as<GetinfoRequest>(), onDecode: onDecode);
       case "listtransactions":
-        return await stub.listTransactions(params.as<ListtransactionsRequest>())
-            as T;
+        return await listTransactions(
+            params: params.as<ListtransactionsRequest>(), onDecode: onDecode);
       case "listfunds":
-        return await stub.listFunds(params.as<ListfundsRequest>()) as T;
+        return await listFunds(
+            params: params.as<ListfundsRequest>(), onDecode: onDecode);
       case "listpeers":
-        return await stub.listPeers(params.as<ListpeersRequest>()) as T;
+        return await listPeers(
+            params: params.as<ListpeersRequest>(), onDecode: onDecode);
       case "listchannels":
-        return await stub.listChannels(params.as<ListchannelsRequest>()) as T;
+        return await listChannels(
+            params: params.as<ListchannelsRequest>(), onDecode: onDecode);
     }
     throw Exception(
         "method $method not found, report a issue on Github or try to use client.stub to use the raw grpc client");
