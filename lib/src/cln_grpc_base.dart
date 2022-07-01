@@ -122,6 +122,16 @@ class GRPCClient extends LightningClient {
     return response as T;
   }
 
+  Future<T> listInvoices<T>(
+      {required ListinvoicesRequest params, T Function(Map)? onDecode}) async {
+    /// request to server
+    var response = await stub.listInvoices(params);
+    if (onDecode != null) {
+      return onDecode(toEncode(response.toProto3Json()));
+    }
+    return response as T;
+  }
+
   // FIXME: this is a terrible ack inside the code, but we need to check
   // if the toProto3Json can me converted inside a map with a cast.
   Map<String, dynamic> toEncode(dynamic toEncode) {
@@ -151,6 +161,9 @@ class GRPCClient extends LightningClient {
       case "listchannels":
         return await listChannels(
             params: params.as<ListchannelsRequest>(), onDecode: onDecode);
+      case "listinvoices":
+        return await listInvoices(
+            params: params.as<ListinvoicesRequest>(), onDecode: onDecode);
     }
     throw Exception(
         "method $method not found, report a issue on Github or try to use client.stub to use the raw grpc client");

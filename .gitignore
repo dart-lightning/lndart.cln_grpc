@@ -3,3 +3,4 @@
 .idea/
 pubspec.lock
 docker/data
+build
