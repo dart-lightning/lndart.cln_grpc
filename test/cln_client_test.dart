@@ -47,6 +47,20 @@ class ListChannelProxy extends Serializable {
   T as<T>() => proxy as T;
 }
 
+class ListInvoiceProxy extends Serializable {
+  ListinvoicesRequest proxy;
+
+  ListInvoiceProxy(this.proxy);
+
+  factory ListInvoiceProxy.build() => ListInvoiceProxy(ListinvoicesRequest());
+
+  @override
+  Map<String, dynamic> toJSON() => proxy.writeToJsonMap();
+
+  @override
+  T as<T>() => proxy as T;
+}
+
 void main() {
   var env = Platform.environment;
   var tlsPath = env['TLS_PATH']!;
@@ -89,6 +103,15 @@ void main() {
           method: "listchannels", params: ListChannelProxy.build());
       expect(response, isNotNull);
       expect(response.channels.isEmpty, isTrue);
+      await client.close();
+    });
+
+    test('call list invoices through generic client', () async {
+      var client = GRPCClient(rootPath: tlsPath);
+      var response = await client.call<ListInvoiceProxy, ListinvoicesResponse>(
+          method: "listinvoices", params: ListInvoiceProxy.build());
+      expect(response, isNotNull);
+      expect(response.invoices.isEmpty, isTrue);
       await client.close();
     });
   });
