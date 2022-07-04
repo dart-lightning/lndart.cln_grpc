@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>lndart.cln_grp</h1>
+  <h1>lndart.cln_grpc</h1>
 
   <img src="https://github.com/dart-lightning/icons/raw/main/main/res/mipmap-xxxhdpi/ic_launcher.png" />
 
@@ -25,22 +25,74 @@
 
 ## Introduction
 
-The repository is managed as monorepo, and it contains the following packages:
+A dart library which facilitates dart GRPC client for core lightning 
 
-- clightning_rpc: The RPC wrapper around the core lightning API.
-- cln_plugin: A library to write extensible plugin in dart for core lightning.
+## Why cln_grpc?
+
+Cln_grpc library is a GRPC wrapper with a generic interface which facliates easy interaction with core lightning for dart and flutter. It can be used to direclty access the core lightning node and to perform some operations on it such as getting node information using "getinfo" method. 
+
 
 ## How to Use
+### How to connect to core lightning using cln_grpc
 
+To connect to a grpc server we need port of server, host and ChannelOptions
+
+Here in this libraray the only required parameter is path to certificates for authentification, The library also provides some optional parameters such as 
+
+- host("localhost" by default)
+- port(8001 by default)
+- authority("localhost" by default)
+- channel options
+
+To inititate the client and make a connection with the server we declare client like this:
 ```dart
-import 'package:cln_grpc/cln_grpc.dart';
-
-Future<void> main(List<String> args) async {
-  var client = GRPCClient(rootPath: args[0], certClientPath: "/");
+var client = GRPCClient(rootPath: "<path_to_certificates>");
+```
+### How to call a method:
+There are several ways to call a method 
+1. call getinfo with a parse function
+```dart
   var response = await client.getinfo();
   print('Response from server\n$response');
-  client.close();
+```
+2. generic call <T, R> with a parse function
+
+Here we need to serialize the request method in order to encode it from json to map
+```dart
+class ListTransactionProxy extends Serializable {
+  ListtransactionsRequest proxy;
+
+  ListTransactionProxy(this.proxy);
+
+  factory ListTransactionProxy.build() =>
+      ListTransactionProxy(ListtransactionsRequest());
+
+  @override
+  Map<String, dynamic> toJSON() => proxy.writeToJsonMap();
+
+  @override
+  T as<T>() => proxy as T;
 }
+```
+after serializing the request we call the generic "call" method and provide some requires parameters as below
+```dart
+  var transactionList =
+      await client.call<ListTransactionProxy, ListtransactionsResponse>(
+          method: "listtransactions", params: ListTransactionProxy.build());
+  print("Transactions of node");
+  print(transactionList.transactions);
+```
+
+3. Direct acces to stub incase a method is not found implemented(skip the library architecture)
+```dart
+  var forwardsList=await client.stub.listForwards(ListforwardsRequest());
+  print("forwards of node");
+  print(forwardsList.forwards);
+```
+### Close client connection:
+Shutting down the grpc client connection is really easy calling the close method like this:
+```dart
+  client.close();
 ```
 
 ## How Contribute
