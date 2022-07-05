@@ -18,15 +18,24 @@ class ListTransactionProxy extends Serializable {
 
 Future<void> main(List<String> args) async {
   var client = GRPCClient(rootPath: args[0]);
-  var response = await client.getInfo(params: GetinfoRequest());
+
+  /// using direct method call
+  var response = await client.getInfo(
+      params: GetinfoRequest(),
+      onDecode: (jsonResponse) => (jsonResponse as Map<String, dynamic>));
   print('Response from server\n$response');
 
-  /// It is possible also use the generic call like
+  /// using the generic call like
   var transactionList =
       await client.call<ListTransactionProxy, ListtransactionsResponse>(
           method: "listtransactions", params: ListTransactionProxy.build());
   print("Transactions of node");
   print(transactionList.transactions);
+
+  /// using stub to call different methods
+  var forwardsList = await client.stub.listForwards(ListforwardsRequest());
+  print("Forwards of node");
+  print(forwardsList.forwards);
 
   client.close();
 }
