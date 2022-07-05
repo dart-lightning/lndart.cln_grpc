@@ -29,22 +29,23 @@ A dart library which facilitates dart GRPC client for core lightning
 
 ## Why cln_grpc?
 
-Cln_grpc library is a GRPC wrapper with a generic interface which facliates easy interaction with core lightning for dart and flutter. It can be used to direclty access the core lightning node and to perform some operations on it such as getting node information using "getinfo" method. 
+cln_grpc library is a GRPC wrapper with a generic interface which facilitates easy interaction with core lightning for dart and flutter. It can be used to direclty access core lightning node and to perform some operations on it such as calling rpc method supported by the GRPC interface.  
 
 
 ## How to Use
 ### How to connect to core lightning using cln_grpc
 
-To connect to a grpc server we need port of server, host and ChannelOptions
+To connect to a grpc server we need port of server, host and server credentials
 
-Here in this libraray the only required parameter is path to certificates for authentification, The library also provides some optional parameters such as 
+Here in this library the only required parameter is path to certificates for authentification, and also provides some optional parameters such as 
 
-- host("localhost" by default)
-- port(8001 by default)
+- host("localhost" by default): Where the server is running, this need to match what is declared inside the tls certificate
+- port(8001 by default): where the grpc server is running, specified as `grpc-port` in the core lightning option
 - authority("localhost" by default)
-- channel options
+- channelcredentials: Options controlling TLS security settings on a ClientChannel.
 
-To inititate the client and make a connection with the server we declare client like this:
+
+To initiate the client and make a connection with the server we declare client like this:
 ```dart
 var client = GRPCClient(rootPath: "<path_to_certificates>");
 ```
@@ -52,7 +53,7 @@ var client = GRPCClient(rootPath: "<path_to_certificates>");
 There are several ways to call a method 
 1. call getinfo with a parse function
 ```dart
-  var response = await client.getinfo();
+  var response = await client.getinfo(onDecode: (Map<String, dynamc> json) => json);
   print('Response from server\n$response');
 ```
 2. generic call <T, R> with a parse function
