@@ -21,8 +21,7 @@ Future<void> main(List<String> args) async {
 
   /// using direct method call
   var response = await client.getInfo(
-      params: GetinfoRequest(),
-      onDecode: (jsonResponse) => (jsonResponse as Map<String, dynamic>));
+      params: GetinfoRequest(), onDecode: (jsonResponse) => (jsonResponse));
   print('Response from server\n$response');
 
   /// using the generic call like
