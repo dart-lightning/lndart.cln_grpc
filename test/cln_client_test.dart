@@ -114,5 +114,13 @@ void main() {
       expect(response.invoices.isEmpty, isTrue);
       await client.close();
     });
+
+    test('call forwards through stub to call different methods', () async {
+      var client = GRPCClient(rootPath: tlsPath);
+      var response = await client.stub.listForwards(ListforwardsRequest());
+      expect(response.forwards, isNotNull);
+      expect(response.forwards.isEmpty, isTrue);
+      await client.close();
+    });
   });
 }
