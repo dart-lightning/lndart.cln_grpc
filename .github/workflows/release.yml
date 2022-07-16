@@ -1,0 +1,22 @@
+name: publish lndart.cln_grpc
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Publish
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+          flutter: false
+          skipTests: true
+          force: true
+          dryRunOnly: ${{ github.event_name != 'release' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TEST_TOKEN }}
