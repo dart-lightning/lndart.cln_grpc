@@ -4,3 +4,4 @@
 pubspec.lock
 docker/data
 build
+.gitpod
