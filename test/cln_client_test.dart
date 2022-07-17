@@ -55,7 +55,7 @@ class ListInvoiceProxy extends Serializable {
   factory ListInvoiceProxy.build() => ListInvoiceProxy(ListinvoicesRequest());
 
   @override
-  Map<String, dynamic> toJSON() => proxy.writeToJsonMap();
+  Map<String, dynamic> toJSON() => proxy.toProto3Json() as Map<String, dynamic>;
 
   @override
   T as<T>() => proxy as T;
