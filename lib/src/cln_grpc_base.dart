@@ -3,10 +3,11 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:cln_common/cln_common.dart';
-import 'package:cln_grpc/src/generated/node.pbgrpc.dart';
+import 'package:cln_grpc/cln_grpc.dart';
 import 'package:grpc/grpc.dart';
 
 /// TODO: adds some docs
+/// Source: https://stackoverflow.com/a/68380390/10854225
 class LoadTLSChannelCredentials extends ChannelCredentials {
   final Uint8List? certificateChain;
   final Uint8List? privateKey;
@@ -132,6 +133,16 @@ class GRPCClient extends LightningClient {
     return response as T;
   }
 
+  Future<T> pay<T>(
+      {required PayRequest params, T Function(Map)? onDecode}) async {
+    /// request to server
+    var response = await stub.pay(params);
+    if (onDecode != null) {
+      return onDecode(toEncode(response.toProto3Json()));
+    }
+    return response as T;
+  }
+
   // FIXME: this is a terrible ack inside the code, but we need to check
   // if the toProto3Json can me converted inside a map with a cast.
   Map<String, dynamic> toEncode(dynamic toEncode) {
@@ -164,6 +175,8 @@ class GRPCClient extends LightningClient {
       case "listinvoices":
         return await listInvoices(
             params: params.as<ListinvoicesRequest>(), onDecode: onDecode);
+      case "pay":
+        return await pay(params: params.as<PayRequest>(), onDecode: onDecode);
     }
     throw Exception(
         "method $method not found, report a issue on Github or try to use client.stub to use the raw grpc client");
