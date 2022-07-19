@@ -22,7 +22,7 @@ class PayProxy extends Serializable {
 
   PayProxy(this.proxy);
 
-  factory PayProxy.build(String invoice, Amount? amount) =>
+  factory PayProxy.build({required String invoice, Amount? amount}) =>
       PayProxy(PayRequest(bolt11: invoice, msatoshi: amount));
 
   @override
@@ -58,7 +58,7 @@ Future<void> main(List<String> args) async {
   amount.msat = msat;
   String boltString = args[1];
   var pay = await client.call<PayProxy, PayResponse>(
-      method: "pay", params: PayProxy.build(boltString, amount));
+      method: "pay", params: PayProxy.build(invoice: boltString));
 
   print(pay.amountMsat.msat);
   client.close();
