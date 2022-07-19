@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:clightning_rpc/clightning_rpc.dart';
 import 'package:cln_common/cln_common.dart';
 import 'package:cln_grpc/cln_grpc.dart';
-import 'package:fixnum/fixnum.dart';
 import 'package:grpc/grpc.dart';
 import 'package:test/test.dart';
 
@@ -69,7 +68,7 @@ class PayProxy extends Serializable {
 
   PayProxy(this.proxy);
 
-  factory PayProxy.build(String invoice, Amount? amount) =>
+  factory PayProxy.build({required String invoice, Amount? amount}) =>
       PayProxy(PayRequest(bolt11: invoice, msatoshi: amount));
 
   @override
@@ -143,31 +142,28 @@ void main() {
       await client.close();
     });
 
+    /// FIXME: need some improvement in pay service test
     test('call pay through generic client', () async {
-      // Get an invoice with Unix RPC client
+      /// Get an invoice with Unix RPC client
       var unixCient = RPCClient().connect(rpcPath!);
 
       var client = GRPCClient(rootPath: tlsPath);
-      Int64 msat = Int64(1000);
-      Amount amount = Amount();
-      amount.msat = msat;
 
       var params = <String, dynamic>{
         'msatoshi': '100000msat',
         'label': 'from-grpc_dart-1',
         'description': 'This is a integration test'
       };
-
       var boltString = await unixCient.simpleCall("invoice", params: params);
       try {
         var response = await client.call<PayProxy, PayResponse>(
             method: "pay",
-            params: PayProxy.build(boltString["bolt11"], amount));
+            params: PayProxy.build(invoice: boltString["bolt11"]));
         await client.close();
         fail("No exception received and this is stange");
       } on GrpcError catch (ex) {
         expect(ex.message,
-            "This payment is destined for ourselves. Self-payments are not supported");
+            '''Error calling method Pay: RpcError { code: Some(-32602), message: "This payment is destined for ourselves. Self-payments are not supported" }''');
       } catch (ex) {
         fail("$ex");
       }
