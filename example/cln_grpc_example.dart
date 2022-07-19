@@ -53,7 +53,7 @@ Future<void> main(List<String> args) async {
   print(forwardsList.forwards);
 
   /// custom call using proxy to add dynamic inputs
-  Int64 msat= Int64(1000);
+  Int64 msat = Int64(1000);
   Amount amount = Amount();
   amount.msat = msat;
   String boltString = args[1];

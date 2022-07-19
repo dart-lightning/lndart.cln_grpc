@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:clightning_rpc/clightning_rpc.dart';
 import 'package:cln_common/cln_common.dart';
 import 'package:cln_grpc/cln_grpc.dart';
 import 'package:fixnum/fixnum.dart';
+import 'package:grpc/grpc.dart';
 import 'package:test/test.dart';
 
 class GetInfoProxy extends Serializable {
@@ -80,6 +82,8 @@ class PayProxy extends Serializable {
 void main() {
   var env = Platform.environment;
   var tlsPath = env['TLS_PATH']!;
+  var rpcPath = env['RPC_PATH'];
+
   group('Generic client tests', () {
     test('call get info through generic client', () async {
       var client = GRPCClient(rootPath: tlsPath);
@@ -140,16 +144,33 @@ void main() {
     });
 
     test('call pay through generic client', () async {
+      // Get an invoice with Unix RPC client
+      var unixCient = RPCClient().connect(rpcPath!);
+
       var client = GRPCClient(rootPath: tlsPath);
-      Int64 msat= Int64(1000);
+      Int64 msat = Int64(1000);
       Amount amount = Amount();
       amount.msat = msat;
-      String boltString = "lntb1p3dvldwsp5xdashngpt2mqwk4qn2jsyuae3eeu3n392dj9cpkh9ejup8udug3qpp5e2eg0vjxk28lwkcun2qhvdzc7dheyqtqcpyxj5hkj9w3pldqdwrqdp8vdkxugr8wfcxxgr5v4ehg6twvusxjmnkda5kxegxqyjw5qcqp2rzjq287tx7hh03esf5e2d08usanqhrfpx0mmkvs9vd0tp66zg0ahx3acgk6hqqqqncqqyqqqqqpqqqqqzsqqc9qyysgqje90t9wdfjlpm6ur6xzxwkfxpxhrmst43lp6x29etfuhe9rwq4f9s7saq39qwnnu3urnemw03antu984mp2hxhcv24kedcuj0tyfzzspe6tdrw";
-      var response = await client.call<PayProxy, PayResponse>(
-          method: "pay", params: PayProxy.build(boltString, amount));
-      expect(response.amountMsat.msat.toInt(), 1000);
-      expect(response, isNotNull);
-      await client.close();
-    });
+
+      var params = <String, dynamic>{
+        'msatoshi': '100000msat',
+        'label': 'from-grpc_dart-1',
+        'description': 'This is a integration test'
+      };
+
+      var boltString = await unixCient.simpleCall("invoice", params: params);
+      try {
+        var response = await client.call<PayProxy, PayResponse>(
+            method: "pay",
+            params: PayProxy.build(boltString["bolt11"], amount));
+        await client.close();
+        fail("No exception received and this is stange");
+      } on GrpcError catch (ex) {
+        expect(ex.message,
+            "This payment is destined for ourselves. Self-payments are not supported");
+      } catch (ex) {
+        fail("$ex");
+      }
+    }, skip: rpcPath == null);
   });
 }
