@@ -17,6 +17,7 @@ services:
       --proxy=127.0.0.1:9050
       --addr=statictor:127.0.0.1:9051
       --plugin=/opt/btcli4j.sh
+      --rpc-file-mode=0777
       --log-file=/home/clightning4j/.lightning/log.log
       --daemon
   grpc_test:
