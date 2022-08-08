@@ -1,3 +1,9 @@
+# v0.0.1-beta.3
+
+## Added
+- increase cln version support to v0.12.0rc1 ([commit](https://github.com/dart-lightning/lndart.cln_grpc/commit/b41abf2176d4e1b22273177e0ce7b3294a4c6b9f)). @KAVAN-DESAI 08-08-2022
+
+
 # v0.0.1-beta.2
 
 ## Fixed
