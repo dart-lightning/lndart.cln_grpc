@@ -1,6 +1,6 @@
 name: cln_grpc
 description: A dart library which facilitates dart GRPC client for core lightning.
-version: 0.0.1-beta.2
+version: 0.0.1-beta.3
 homepage: https://github.com/dart-lightning/lndart.cln_grpc
 
 environment:
