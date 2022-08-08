@@ -23,7 +23,7 @@ class PayProxy extends Serializable {
   PayProxy(this.proxy);
 
   factory PayProxy.build({required String invoice, Amount? amount}) =>
-      PayProxy(PayRequest(bolt11: invoice, msatoshi: amount));
+      PayProxy(PayRequest(bolt11: invoice, amountMsat: amount));
 
   @override
   Map<String, dynamic> toJSON() => proxy.toProto3Json() as Map<String, dynamic>;
