@@ -1015,6 +1015,11 @@ class ListpeersPeers extends $pb.GeneratedMessage {
             ? ''
             : 'features',
         $pb.PbFieldType.OY)
+    ..aOS(
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'remoteAddr')
     ..hasRequiredFields = false;
 
   ListpeersPeers._() : super();
@@ -1025,6 +1030,7 @@ class ListpeersPeers extends $pb.GeneratedMessage {
     $core.Iterable<ListpeersPeersChannels>? channels,
     $core.Iterable<$core.String>? netaddr,
     $core.List<$core.int>? features,
+    $core.String? remoteAddr,
   }) {
     final _result = create();
     if (id != null) {
@@ -1044,6 +1050,9 @@ class ListpeersPeers extends $pb.GeneratedMessage {
     }
     if (features != null) {
       _result.features = features;
+    }
+    if (remoteAddr != null) {
+      _result.remoteAddr = remoteAddr;
     }
     return _result;
   }
@@ -1118,6 +1127,18 @@ class ListpeersPeers extends $pb.GeneratedMessage {
   $core.bool hasFeatures() => $_has(5);
   @$pb.TagNumber(6)
   void clearFeatures() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get remoteAddr => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set remoteAddr($core.String v) {
+    $_setString(6, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasRemoteAddr() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearRemoteAddr() => clearField(7);
 }
 
 class ListpeersPeersLog extends $pb.GeneratedMessage {
@@ -1422,6 +1443,15 @@ class ListpeersPeersChannels extends $pb.GeneratedMessage {
         defaultOrMaker: $1.ChannelSide.IN,
         valueOf: $1.ChannelSide.valueOf,
         enumValues: $1.ChannelSide.values)
+    ..e<$1.ChannelSide>(
+        17,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'closer',
+        $pb.PbFieldType.OE,
+        defaultOrMaker: $1.ChannelSide.IN,
+        valueOf: $1.ChannelSide.valueOf,
+        enumValues: $1.ChannelSide.values)
     ..pPS(
         18,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1623,6 +1653,7 @@ class ListpeersPeersChannels extends $pb.GeneratedMessage {
     $core.List<$core.int>? closeTo,
     $core.bool? private,
     $1.ChannelSide? opener,
+    $1.ChannelSide? closer,
     $core.Iterable<$core.String>? features,
     $1.Amount? toUsMsat,
     $1.Amount? minToUsMsat,
@@ -1699,6 +1730,9 @@ class ListpeersPeersChannels extends $pb.GeneratedMessage {
     }
     if (opener != null) {
       _result.opener = opener;
+    }
+    if (closer != null) {
+      _result.closer = closer;
     }
     if (features != null) {
       _result.features.addAll(features);
@@ -1992,374 +2026,386 @@ class ListpeersPeersChannels extends $pb.GeneratedMessage {
   @$pb.TagNumber(16)
   void clearOpener() => clearField(16);
 
+  @$pb.TagNumber(17)
+  $1.ChannelSide get closer => $_getN(15);
+  @$pb.TagNumber(17)
+  set closer($1.ChannelSide v) {
+    setField(17, v);
+  }
+
+  @$pb.TagNumber(17)
+  $core.bool hasCloser() => $_has(15);
+  @$pb.TagNumber(17)
+  void clearCloser() => clearField(17);
+
   @$pb.TagNumber(18)
-  $core.List<$core.String> get features => $_getList(15);
+  $core.List<$core.String> get features => $_getList(16);
 
   @$pb.TagNumber(20)
-  $1.Amount get toUsMsat => $_getN(16);
+  $1.Amount get toUsMsat => $_getN(17);
   @$pb.TagNumber(20)
   set toUsMsat($1.Amount v) {
     setField(20, v);
   }
 
   @$pb.TagNumber(20)
-  $core.bool hasToUsMsat() => $_has(16);
+  $core.bool hasToUsMsat() => $_has(17);
   @$pb.TagNumber(20)
   void clearToUsMsat() => clearField(20);
   @$pb.TagNumber(20)
-  $1.Amount ensureToUsMsat() => $_ensure(16);
+  $1.Amount ensureToUsMsat() => $_ensure(17);
 
   @$pb.TagNumber(21)
-  $1.Amount get minToUsMsat => $_getN(17);
+  $1.Amount get minToUsMsat => $_getN(18);
   @$pb.TagNumber(21)
   set minToUsMsat($1.Amount v) {
     setField(21, v);
   }
 
   @$pb.TagNumber(21)
-  $core.bool hasMinToUsMsat() => $_has(17);
+  $core.bool hasMinToUsMsat() => $_has(18);
   @$pb.TagNumber(21)
   void clearMinToUsMsat() => clearField(21);
   @$pb.TagNumber(21)
-  $1.Amount ensureMinToUsMsat() => $_ensure(17);
+  $1.Amount ensureMinToUsMsat() => $_ensure(18);
 
   @$pb.TagNumber(22)
-  $1.Amount get maxToUsMsat => $_getN(18);
+  $1.Amount get maxToUsMsat => $_getN(19);
   @$pb.TagNumber(22)
   set maxToUsMsat($1.Amount v) {
     setField(22, v);
   }
 
   @$pb.TagNumber(22)
-  $core.bool hasMaxToUsMsat() => $_has(18);
+  $core.bool hasMaxToUsMsat() => $_has(19);
   @$pb.TagNumber(22)
   void clearMaxToUsMsat() => clearField(22);
   @$pb.TagNumber(22)
-  $1.Amount ensureMaxToUsMsat() => $_ensure(18);
+  $1.Amount ensureMaxToUsMsat() => $_ensure(19);
 
   @$pb.TagNumber(23)
-  $1.Amount get totalMsat => $_getN(19);
+  $1.Amount get totalMsat => $_getN(20);
   @$pb.TagNumber(23)
   set totalMsat($1.Amount v) {
     setField(23, v);
   }
 
   @$pb.TagNumber(23)
-  $core.bool hasTotalMsat() => $_has(19);
+  $core.bool hasTotalMsat() => $_has(20);
   @$pb.TagNumber(23)
   void clearTotalMsat() => clearField(23);
   @$pb.TagNumber(23)
-  $1.Amount ensureTotalMsat() => $_ensure(19);
+  $1.Amount ensureTotalMsat() => $_ensure(20);
 
   @$pb.TagNumber(24)
-  $1.Amount get feeBaseMsat => $_getN(20);
+  $1.Amount get feeBaseMsat => $_getN(21);
   @$pb.TagNumber(24)
   set feeBaseMsat($1.Amount v) {
     setField(24, v);
   }
 
   @$pb.TagNumber(24)
-  $core.bool hasFeeBaseMsat() => $_has(20);
+  $core.bool hasFeeBaseMsat() => $_has(21);
   @$pb.TagNumber(24)
   void clearFeeBaseMsat() => clearField(24);
   @$pb.TagNumber(24)
-  $1.Amount ensureFeeBaseMsat() => $_ensure(20);
+  $1.Amount ensureFeeBaseMsat() => $_ensure(21);
 
   @$pb.TagNumber(25)
-  $core.int get feeProportionalMillionths => $_getIZ(21);
+  $core.int get feeProportionalMillionths => $_getIZ(22);
   @$pb.TagNumber(25)
   set feeProportionalMillionths($core.int v) {
-    $_setUnsignedInt32(21, v);
+    $_setUnsignedInt32(22, v);
   }
 
   @$pb.TagNumber(25)
-  $core.bool hasFeeProportionalMillionths() => $_has(21);
+  $core.bool hasFeeProportionalMillionths() => $_has(22);
   @$pb.TagNumber(25)
   void clearFeeProportionalMillionths() => clearField(25);
 
   @$pb.TagNumber(26)
-  $1.Amount get dustLimitMsat => $_getN(22);
+  $1.Amount get dustLimitMsat => $_getN(23);
   @$pb.TagNumber(26)
   set dustLimitMsat($1.Amount v) {
     setField(26, v);
   }
 
   @$pb.TagNumber(26)
-  $core.bool hasDustLimitMsat() => $_has(22);
+  $core.bool hasDustLimitMsat() => $_has(23);
   @$pb.TagNumber(26)
   void clearDustLimitMsat() => clearField(26);
   @$pb.TagNumber(26)
-  $1.Amount ensureDustLimitMsat() => $_ensure(22);
+  $1.Amount ensureDustLimitMsat() => $_ensure(23);
 
   @$pb.TagNumber(27)
-  $1.Amount get maxTotalHtlcInMsat => $_getN(23);
+  $1.Amount get maxTotalHtlcInMsat => $_getN(24);
   @$pb.TagNumber(27)
   set maxTotalHtlcInMsat($1.Amount v) {
     setField(27, v);
   }
 
   @$pb.TagNumber(27)
-  $core.bool hasMaxTotalHtlcInMsat() => $_has(23);
+  $core.bool hasMaxTotalHtlcInMsat() => $_has(24);
   @$pb.TagNumber(27)
   void clearMaxTotalHtlcInMsat() => clearField(27);
   @$pb.TagNumber(27)
-  $1.Amount ensureMaxTotalHtlcInMsat() => $_ensure(23);
+  $1.Amount ensureMaxTotalHtlcInMsat() => $_ensure(24);
 
   @$pb.TagNumber(28)
-  $1.Amount get theirReserveMsat => $_getN(24);
+  $1.Amount get theirReserveMsat => $_getN(25);
   @$pb.TagNumber(28)
   set theirReserveMsat($1.Amount v) {
     setField(28, v);
   }
 
   @$pb.TagNumber(28)
-  $core.bool hasTheirReserveMsat() => $_has(24);
+  $core.bool hasTheirReserveMsat() => $_has(25);
   @$pb.TagNumber(28)
   void clearTheirReserveMsat() => clearField(28);
   @$pb.TagNumber(28)
-  $1.Amount ensureTheirReserveMsat() => $_ensure(24);
+  $1.Amount ensureTheirReserveMsat() => $_ensure(25);
 
   @$pb.TagNumber(29)
-  $1.Amount get ourReserveMsat => $_getN(25);
+  $1.Amount get ourReserveMsat => $_getN(26);
   @$pb.TagNumber(29)
   set ourReserveMsat($1.Amount v) {
     setField(29, v);
   }
 
   @$pb.TagNumber(29)
-  $core.bool hasOurReserveMsat() => $_has(25);
+  $core.bool hasOurReserveMsat() => $_has(26);
   @$pb.TagNumber(29)
   void clearOurReserveMsat() => clearField(29);
   @$pb.TagNumber(29)
-  $1.Amount ensureOurReserveMsat() => $_ensure(25);
+  $1.Amount ensureOurReserveMsat() => $_ensure(26);
 
   @$pb.TagNumber(30)
-  $1.Amount get spendableMsat => $_getN(26);
+  $1.Amount get spendableMsat => $_getN(27);
   @$pb.TagNumber(30)
   set spendableMsat($1.Amount v) {
     setField(30, v);
   }
 
   @$pb.TagNumber(30)
-  $core.bool hasSpendableMsat() => $_has(26);
+  $core.bool hasSpendableMsat() => $_has(27);
   @$pb.TagNumber(30)
   void clearSpendableMsat() => clearField(30);
   @$pb.TagNumber(30)
-  $1.Amount ensureSpendableMsat() => $_ensure(26);
+  $1.Amount ensureSpendableMsat() => $_ensure(27);
 
   @$pb.TagNumber(31)
-  $1.Amount get receivableMsat => $_getN(27);
+  $1.Amount get receivableMsat => $_getN(28);
   @$pb.TagNumber(31)
   set receivableMsat($1.Amount v) {
     setField(31, v);
   }
 
   @$pb.TagNumber(31)
-  $core.bool hasReceivableMsat() => $_has(27);
+  $core.bool hasReceivableMsat() => $_has(28);
   @$pb.TagNumber(31)
   void clearReceivableMsat() => clearField(31);
   @$pb.TagNumber(31)
-  $1.Amount ensureReceivableMsat() => $_ensure(27);
+  $1.Amount ensureReceivableMsat() => $_ensure(28);
 
   @$pb.TagNumber(32)
-  $1.Amount get minimumHtlcInMsat => $_getN(28);
+  $1.Amount get minimumHtlcInMsat => $_getN(29);
   @$pb.TagNumber(32)
   set minimumHtlcInMsat($1.Amount v) {
     setField(32, v);
   }
 
   @$pb.TagNumber(32)
-  $core.bool hasMinimumHtlcInMsat() => $_has(28);
+  $core.bool hasMinimumHtlcInMsat() => $_has(29);
   @$pb.TagNumber(32)
   void clearMinimumHtlcInMsat() => clearField(32);
   @$pb.TagNumber(32)
-  $1.Amount ensureMinimumHtlcInMsat() => $_ensure(28);
+  $1.Amount ensureMinimumHtlcInMsat() => $_ensure(29);
 
   @$pb.TagNumber(33)
-  $core.int get theirToSelfDelay => $_getIZ(29);
+  $core.int get theirToSelfDelay => $_getIZ(30);
   @$pb.TagNumber(33)
   set theirToSelfDelay($core.int v) {
-    $_setUnsignedInt32(29, v);
+    $_setUnsignedInt32(30, v);
   }
 
   @$pb.TagNumber(33)
-  $core.bool hasTheirToSelfDelay() => $_has(29);
+  $core.bool hasTheirToSelfDelay() => $_has(30);
   @$pb.TagNumber(33)
   void clearTheirToSelfDelay() => clearField(33);
 
   @$pb.TagNumber(34)
-  $core.int get ourToSelfDelay => $_getIZ(30);
+  $core.int get ourToSelfDelay => $_getIZ(31);
   @$pb.TagNumber(34)
   set ourToSelfDelay($core.int v) {
-    $_setUnsignedInt32(30, v);
+    $_setUnsignedInt32(31, v);
   }
 
   @$pb.TagNumber(34)
-  $core.bool hasOurToSelfDelay() => $_has(30);
+  $core.bool hasOurToSelfDelay() => $_has(31);
   @$pb.TagNumber(34)
   void clearOurToSelfDelay() => clearField(34);
 
   @$pb.TagNumber(35)
-  $core.int get maxAcceptedHtlcs => $_getIZ(31);
+  $core.int get maxAcceptedHtlcs => $_getIZ(32);
   @$pb.TagNumber(35)
   set maxAcceptedHtlcs($core.int v) {
-    $_setUnsignedInt32(31, v);
+    $_setUnsignedInt32(32, v);
   }
 
   @$pb.TagNumber(35)
-  $core.bool hasMaxAcceptedHtlcs() => $_has(31);
+  $core.bool hasMaxAcceptedHtlcs() => $_has(32);
   @$pb.TagNumber(35)
   void clearMaxAcceptedHtlcs() => clearField(35);
 
   @$pb.TagNumber(37)
-  $core.List<$core.String> get status => $_getList(32);
+  $core.List<$core.String> get status => $_getList(33);
 
   @$pb.TagNumber(38)
-  $fixnum.Int64 get inPaymentsOffered => $_getI64(33);
+  $fixnum.Int64 get inPaymentsOffered => $_getI64(34);
   @$pb.TagNumber(38)
   set inPaymentsOffered($fixnum.Int64 v) {
-    $_setInt64(33, v);
+    $_setInt64(34, v);
   }
 
   @$pb.TagNumber(38)
-  $core.bool hasInPaymentsOffered() => $_has(33);
+  $core.bool hasInPaymentsOffered() => $_has(34);
   @$pb.TagNumber(38)
   void clearInPaymentsOffered() => clearField(38);
 
   @$pb.TagNumber(39)
-  $1.Amount get inOfferedMsat => $_getN(34);
+  $1.Amount get inOfferedMsat => $_getN(35);
   @$pb.TagNumber(39)
   set inOfferedMsat($1.Amount v) {
     setField(39, v);
   }
 
   @$pb.TagNumber(39)
-  $core.bool hasInOfferedMsat() => $_has(34);
+  $core.bool hasInOfferedMsat() => $_has(35);
   @$pb.TagNumber(39)
   void clearInOfferedMsat() => clearField(39);
   @$pb.TagNumber(39)
-  $1.Amount ensureInOfferedMsat() => $_ensure(34);
+  $1.Amount ensureInOfferedMsat() => $_ensure(35);
 
   @$pb.TagNumber(40)
-  $fixnum.Int64 get inPaymentsFulfilled => $_getI64(35);
+  $fixnum.Int64 get inPaymentsFulfilled => $_getI64(36);
   @$pb.TagNumber(40)
   set inPaymentsFulfilled($fixnum.Int64 v) {
-    $_setInt64(35, v);
+    $_setInt64(36, v);
   }
 
   @$pb.TagNumber(40)
-  $core.bool hasInPaymentsFulfilled() => $_has(35);
+  $core.bool hasInPaymentsFulfilled() => $_has(36);
   @$pb.TagNumber(40)
   void clearInPaymentsFulfilled() => clearField(40);
 
   @$pb.TagNumber(41)
-  $1.Amount get inFulfilledMsat => $_getN(36);
+  $1.Amount get inFulfilledMsat => $_getN(37);
   @$pb.TagNumber(41)
   set inFulfilledMsat($1.Amount v) {
     setField(41, v);
   }
 
   @$pb.TagNumber(41)
-  $core.bool hasInFulfilledMsat() => $_has(36);
+  $core.bool hasInFulfilledMsat() => $_has(37);
   @$pb.TagNumber(41)
   void clearInFulfilledMsat() => clearField(41);
   @$pb.TagNumber(41)
-  $1.Amount ensureInFulfilledMsat() => $_ensure(36);
+  $1.Amount ensureInFulfilledMsat() => $_ensure(37);
 
   @$pb.TagNumber(42)
-  $fixnum.Int64 get outPaymentsOffered => $_getI64(37);
+  $fixnum.Int64 get outPaymentsOffered => $_getI64(38);
   @$pb.TagNumber(42)
   set outPaymentsOffered($fixnum.Int64 v) {
-    $_setInt64(37, v);
+    $_setInt64(38, v);
   }
 
   @$pb.TagNumber(42)
-  $core.bool hasOutPaymentsOffered() => $_has(37);
+  $core.bool hasOutPaymentsOffered() => $_has(38);
   @$pb.TagNumber(42)
   void clearOutPaymentsOffered() => clearField(42);
 
   @$pb.TagNumber(43)
-  $1.Amount get outOfferedMsat => $_getN(38);
+  $1.Amount get outOfferedMsat => $_getN(39);
   @$pb.TagNumber(43)
   set outOfferedMsat($1.Amount v) {
     setField(43, v);
   }
 
   @$pb.TagNumber(43)
-  $core.bool hasOutOfferedMsat() => $_has(38);
+  $core.bool hasOutOfferedMsat() => $_has(39);
   @$pb.TagNumber(43)
   void clearOutOfferedMsat() => clearField(43);
   @$pb.TagNumber(43)
-  $1.Amount ensureOutOfferedMsat() => $_ensure(38);
+  $1.Amount ensureOutOfferedMsat() => $_ensure(39);
 
   @$pb.TagNumber(44)
-  $fixnum.Int64 get outPaymentsFulfilled => $_getI64(39);
+  $fixnum.Int64 get outPaymentsFulfilled => $_getI64(40);
   @$pb.TagNumber(44)
   set outPaymentsFulfilled($fixnum.Int64 v) {
-    $_setInt64(39, v);
+    $_setInt64(40, v);
   }
 
   @$pb.TagNumber(44)
-  $core.bool hasOutPaymentsFulfilled() => $_has(39);
+  $core.bool hasOutPaymentsFulfilled() => $_has(40);
   @$pb.TagNumber(44)
   void clearOutPaymentsFulfilled() => clearField(44);
 
   @$pb.TagNumber(45)
-  $1.Amount get outFulfilledMsat => $_getN(40);
+  $1.Amount get outFulfilledMsat => $_getN(41);
   @$pb.TagNumber(45)
   set outFulfilledMsat($1.Amount v) {
     setField(45, v);
   }
 
   @$pb.TagNumber(45)
-  $core.bool hasOutFulfilledMsat() => $_has(40);
+  $core.bool hasOutFulfilledMsat() => $_has(41);
   @$pb.TagNumber(45)
   void clearOutFulfilledMsat() => clearField(45);
   @$pb.TagNumber(45)
-  $1.Amount ensureOutFulfilledMsat() => $_ensure(40);
+  $1.Amount ensureOutFulfilledMsat() => $_ensure(41);
 
   @$pb.TagNumber(46)
-  $core.List<ListpeersPeersChannelsHtlcs> get htlcs => $_getList(41);
+  $core.List<ListpeersPeersChannelsHtlcs> get htlcs => $_getList(42);
 
   @$pb.TagNumber(47)
-  $core.String get closeToAddr => $_getSZ(42);
+  $core.String get closeToAddr => $_getSZ(43);
   @$pb.TagNumber(47)
   set closeToAddr($core.String v) {
-    $_setString(42, v);
+    $_setString(43, v);
   }
 
   @$pb.TagNumber(47)
-  $core.bool hasCloseToAddr() => $_has(42);
+  $core.bool hasCloseToAddr() => $_has(43);
   @$pb.TagNumber(47)
   void clearCloseToAddr() => clearField(47);
 
   @$pb.TagNumber(48)
-  $1.Amount get minimumHtlcOutMsat => $_getN(43);
+  $1.Amount get minimumHtlcOutMsat => $_getN(44);
   @$pb.TagNumber(48)
   set minimumHtlcOutMsat($1.Amount v) {
     setField(48, v);
   }
 
   @$pb.TagNumber(48)
-  $core.bool hasMinimumHtlcOutMsat() => $_has(43);
+  $core.bool hasMinimumHtlcOutMsat() => $_has(44);
   @$pb.TagNumber(48)
   void clearMinimumHtlcOutMsat() => clearField(48);
   @$pb.TagNumber(48)
-  $1.Amount ensureMinimumHtlcOutMsat() => $_ensure(43);
+  $1.Amount ensureMinimumHtlcOutMsat() => $_ensure(44);
 
   @$pb.TagNumber(49)
-  $1.Amount get maximumHtlcOutMsat => $_getN(44);
+  $1.Amount get maximumHtlcOutMsat => $_getN(45);
   @$pb.TagNumber(49)
   set maximumHtlcOutMsat($1.Amount v) {
     setField(49, v);
   }
 
   @$pb.TagNumber(49)
-  $core.bool hasMaximumHtlcOutMsat() => $_has(44);
+  $core.bool hasMaximumHtlcOutMsat() => $_has(45);
   @$pb.TagNumber(49)
   void clearMaximumHtlcOutMsat() => clearField(49);
   @$pb.TagNumber(49)
-  $1.Amount ensureMaximumHtlcOutMsat() => $_ensure(44);
+  $1.Amount ensureMaximumHtlcOutMsat() => $_ensure(45);
 }
 
 class ListpeersPeersChannelsFeerate extends $pb.GeneratedMessage {
@@ -2669,6 +2715,30 @@ class ListpeersPeersChannelsFunding extends $pb.GeneratedMessage {
             ? ''
             : 'pushedMsat',
         subBuilder: $1.Amount.create)
+    ..aOM<$1.Amount>(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'localFundsMsat',
+        subBuilder: $1.Amount.create)
+    ..aOM<$1.Amount>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'feePaidMsat',
+        subBuilder: $1.Amount.create)
+    ..aOM<$1.Amount>(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'feeRcvdMsat',
+        subBuilder: $1.Amount.create)
+    ..aOM<$1.Amount>(
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'remoteFundsMsat',
+        subBuilder: $1.Amount.create)
     ..hasRequiredFields = false;
 
   ListpeersPeersChannelsFunding._() : super();
@@ -2676,6 +2746,10 @@ class ListpeersPeersChannelsFunding extends $pb.GeneratedMessage {
     $1.Amount? localMsat,
     $1.Amount? remoteMsat,
     $1.Amount? pushedMsat,
+    $1.Amount? localFundsMsat,
+    $1.Amount? feePaidMsat,
+    $1.Amount? feeRcvdMsat,
+    $1.Amount? remoteFundsMsat,
   }) {
     final _result = create();
     if (localMsat != null) {
@@ -2686,6 +2760,18 @@ class ListpeersPeersChannelsFunding extends $pb.GeneratedMessage {
     }
     if (pushedMsat != null) {
       _result.pushedMsat = pushedMsat;
+    }
+    if (localFundsMsat != null) {
+      _result.localFundsMsat = localFundsMsat;
+    }
+    if (feePaidMsat != null) {
+      _result.feePaidMsat = feePaidMsat;
+    }
+    if (feeRcvdMsat != null) {
+      _result.feeRcvdMsat = feeRcvdMsat;
+    }
+    if (remoteFundsMsat != null) {
+      _result.remoteFundsMsat = remoteFundsMsat;
     }
     return _result;
   }
@@ -2761,6 +2847,154 @@ class ListpeersPeersChannelsFunding extends $pb.GeneratedMessage {
   void clearPushedMsat() => clearField(3);
   @$pb.TagNumber(3)
   $1.Amount ensurePushedMsat() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  $1.Amount get localFundsMsat => $_getN(3);
+  @$pb.TagNumber(4)
+  set localFundsMsat($1.Amount v) {
+    setField(4, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasLocalFundsMsat() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearLocalFundsMsat() => clearField(4);
+  @$pb.TagNumber(4)
+  $1.Amount ensureLocalFundsMsat() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  $1.Amount get feePaidMsat => $_getN(4);
+  @$pb.TagNumber(5)
+  set feePaidMsat($1.Amount v) {
+    setField(5, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasFeePaidMsat() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearFeePaidMsat() => clearField(5);
+  @$pb.TagNumber(5)
+  $1.Amount ensureFeePaidMsat() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  $1.Amount get feeRcvdMsat => $_getN(5);
+  @$pb.TagNumber(6)
+  set feeRcvdMsat($1.Amount v) {
+    setField(6, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasFeeRcvdMsat() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearFeeRcvdMsat() => clearField(6);
+  @$pb.TagNumber(6)
+  $1.Amount ensureFeeRcvdMsat() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  $1.Amount get remoteFundsMsat => $_getN(6);
+  @$pb.TagNumber(7)
+  set remoteFundsMsat($1.Amount v) {
+    setField(7, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasRemoteFundsMsat() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearRemoteFundsMsat() => clearField(7);
+  @$pb.TagNumber(7)
+  $1.Amount ensureRemoteFundsMsat() => $_ensure(6);
+}
+
+class ListpeersPeersChannelsAlias extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'ListpeersPeersChannelsAlias',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cln'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'local')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'remote')
+    ..hasRequiredFields = false;
+
+  ListpeersPeersChannelsAlias._() : super();
+  factory ListpeersPeersChannelsAlias({
+    $core.String? local,
+    $core.String? remote,
+  }) {
+    final _result = create();
+    if (local != null) {
+      _result.local = local;
+    }
+    if (remote != null) {
+      _result.remote = remote;
+    }
+    return _result;
+  }
+  factory ListpeersPeersChannelsAlias.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory ListpeersPeersChannelsAlias.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  ListpeersPeersChannelsAlias clone() =>
+      ListpeersPeersChannelsAlias()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ListpeersPeersChannelsAlias copyWith(
+          void Function(ListpeersPeersChannelsAlias) updates) =>
+      super.copyWith(
+              (message) => updates(message as ListpeersPeersChannelsAlias))
+          as ListpeersPeersChannelsAlias; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ListpeersPeersChannelsAlias create() =>
+      ListpeersPeersChannelsAlias._();
+  ListpeersPeersChannelsAlias createEmptyInstance() => create();
+  static $pb.PbList<ListpeersPeersChannelsAlias> createRepeated() =>
+      $pb.PbList<ListpeersPeersChannelsAlias>();
+  @$core.pragma('dart2js:noInline')
+  static ListpeersPeersChannelsAlias getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ListpeersPeersChannelsAlias>(create);
+  static ListpeersPeersChannelsAlias? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get local => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set local($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasLocal() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearLocal() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get remote => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set remote($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasRemote() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRemote() => clearField(2);
 }
 
 class ListpeersPeersChannelsHtlcs extends $pb.GeneratedMessage {
@@ -3179,6 +3413,11 @@ class ListfundsOutputs extends $pb.GeneratedMessage {
             ? ''
             : 'blockheight',
         $pb.PbFieldType.OU3)
+    ..aOB(
+        9,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'reserved')
     ..hasRequiredFields = false;
 
   ListfundsOutputs._() : super();
@@ -3191,6 +3430,7 @@ class ListfundsOutputs extends $pb.GeneratedMessage {
     $core.List<$core.int>? redeemscript,
     ListfundsOutputs_ListfundsOutputsStatus? status,
     $core.int? blockheight,
+    $core.bool? reserved,
   }) {
     final _result = create();
     if (txid != null) {
@@ -3216,6 +3456,9 @@ class ListfundsOutputs extends $pb.GeneratedMessage {
     }
     if (blockheight != null) {
       _result.blockheight = blockheight;
+    }
+    if (reserved != null) {
+      _result.reserved = reserved;
     }
     return _result;
   }
@@ -3343,6 +3586,18 @@ class ListfundsOutputs extends $pb.GeneratedMessage {
   $core.bool hasBlockheight() => $_has(7);
   @$pb.TagNumber(8)
   void clearBlockheight() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.bool get reserved => $_getBF(8);
+  @$pb.TagNumber(9)
+  set reserved($core.bool v) {
+    $_setBool(8, v);
+  }
+
+  @$pb.TagNumber(9)
+  $core.bool hasReserved() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearReserved() => clearField(9);
 }
 
 class ListfundsChannels extends $pb.GeneratedMessage {
@@ -3600,12 +3855,6 @@ class SendpayRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'label')
-    ..aOM<$1.Amount>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'msatoshi',
-        subBuilder: $1.Amount.create)
     ..aOS(
         5,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -3636,6 +3885,12 @@ class SendpayRequest extends $pb.GeneratedMessage {
             : 'groupid',
         $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOM<$1.Amount>(
+        10,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'amountMsat',
+        subBuilder: $1.Amount.create)
     ..hasRequiredFields = false;
 
   SendpayRequest._() : super();
@@ -3643,12 +3898,12 @@ class SendpayRequest extends $pb.GeneratedMessage {
     $core.Iterable<SendpayRoute>? route,
     $core.List<$core.int>? paymentHash,
     $core.String? label,
-    $1.Amount? msatoshi,
     $core.String? bolt11,
     $core.List<$core.int>? paymentSecret,
     $core.int? partid,
     $core.List<$core.int>? localofferid,
     $fixnum.Int64? groupid,
+    $1.Amount? amountMsat,
   }) {
     final _result = create();
     if (route != null) {
@@ -3659,9 +3914,6 @@ class SendpayRequest extends $pb.GeneratedMessage {
     }
     if (label != null) {
       _result.label = label;
-    }
-    if (msatoshi != null) {
-      _result.msatoshi = msatoshi;
     }
     if (bolt11 != null) {
       _result.bolt11 = bolt11;
@@ -3677,6 +3929,9 @@ class SendpayRequest extends $pb.GeneratedMessage {
     }
     if (groupid != null) {
       _result.groupid = groupid;
+    }
+    if (amountMsat != null) {
+      _result.amountMsat = amountMsat;
     }
     return _result;
   }
@@ -3734,79 +3989,79 @@ class SendpayRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearLabel() => clearField(3);
 
-  @$pb.TagNumber(4)
-  $1.Amount get msatoshi => $_getN(3);
-  @$pb.TagNumber(4)
-  set msatoshi($1.Amount v) {
-    setField(4, v);
-  }
-
-  @$pb.TagNumber(4)
-  $core.bool hasMsatoshi() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearMsatoshi() => clearField(4);
-  @$pb.TagNumber(4)
-  $1.Amount ensureMsatoshi() => $_ensure(3);
-
   @$pb.TagNumber(5)
-  $core.String get bolt11 => $_getSZ(4);
+  $core.String get bolt11 => $_getSZ(3);
   @$pb.TagNumber(5)
   set bolt11($core.String v) {
-    $_setString(4, v);
+    $_setString(3, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasBolt11() => $_has(4);
+  $core.bool hasBolt11() => $_has(3);
   @$pb.TagNumber(5)
   void clearBolt11() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.List<$core.int> get paymentSecret => $_getN(5);
+  $core.List<$core.int> get paymentSecret => $_getN(4);
   @$pb.TagNumber(6)
   set paymentSecret($core.List<$core.int> v) {
-    $_setBytes(5, v);
+    $_setBytes(4, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasPaymentSecret() => $_has(5);
+  $core.bool hasPaymentSecret() => $_has(4);
   @$pb.TagNumber(6)
   void clearPaymentSecret() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.int get partid => $_getIZ(6);
+  $core.int get partid => $_getIZ(5);
   @$pb.TagNumber(7)
   set partid($core.int v) {
-    $_setUnsignedInt32(6, v);
+    $_setUnsignedInt32(5, v);
   }
 
   @$pb.TagNumber(7)
-  $core.bool hasPartid() => $_has(6);
+  $core.bool hasPartid() => $_has(5);
   @$pb.TagNumber(7)
   void clearPartid() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.List<$core.int> get localofferid => $_getN(7);
+  $core.List<$core.int> get localofferid => $_getN(6);
   @$pb.TagNumber(8)
   set localofferid($core.List<$core.int> v) {
-    $_setBytes(7, v);
+    $_setBytes(6, v);
   }
 
   @$pb.TagNumber(8)
-  $core.bool hasLocalofferid() => $_has(7);
+  $core.bool hasLocalofferid() => $_has(6);
   @$pb.TagNumber(8)
   void clearLocalofferid() => clearField(8);
 
   @$pb.TagNumber(9)
-  $fixnum.Int64 get groupid => $_getI64(8);
+  $fixnum.Int64 get groupid => $_getI64(7);
   @$pb.TagNumber(9)
   set groupid($fixnum.Int64 v) {
-    $_setInt64(8, v);
+    $_setInt64(7, v);
   }
 
   @$pb.TagNumber(9)
-  $core.bool hasGroupid() => $_has(8);
+  $core.bool hasGroupid() => $_has(7);
   @$pb.TagNumber(9)
   void clearGroupid() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $1.Amount get amountMsat => $_getN(8);
+  @$pb.TagNumber(10)
+  set amountMsat($1.Amount v) {
+    setField(10, v);
+  }
+
+  @$pb.TagNumber(10)
+  $core.bool hasAmountMsat() => $_has(8);
+  @$pb.TagNumber(10)
+  void clearAmountMsat() => clearField(10);
+  @$pb.TagNumber(10)
+  $1.Amount ensureAmountMsat() => $_ensure(8);
 }
 
 class SendpayResponse extends $pb.GeneratedMessage {
@@ -4180,12 +4435,6 @@ class SendpayRoute extends $pb.GeneratedMessage {
               ? ''
               : 'cln'),
       createEmptyInstance: create)
-    ..aOM<$1.Amount>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'msatoshi',
-        subBuilder: $1.Amount.create)
     ..a<$core.List<$core.int>>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -4203,19 +4452,22 @@ class SendpayRoute extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'channel')
+    ..aOM<$1.Amount>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'amountMsat',
+        subBuilder: $1.Amount.create)
     ..hasRequiredFields = false;
 
   SendpayRoute._() : super();
   factory SendpayRoute({
-    $1.Amount? msatoshi,
     $core.List<$core.int>? id,
     $core.int? delay,
     $core.String? channel,
+    $1.Amount? amountMsat,
   }) {
     final _result = create();
-    if (msatoshi != null) {
-      _result.msatoshi = msatoshi;
-    }
     if (id != null) {
       _result.id = id;
     }
@@ -4224,6 +4476,9 @@ class SendpayRoute extends $pb.GeneratedMessage {
     }
     if (channel != null) {
       _result.channel = channel;
+    }
+    if (amountMsat != null) {
+      _result.amountMsat = amountMsat;
     }
     return _result;
   }
@@ -4254,55 +4509,55 @@ class SendpayRoute extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<SendpayRoute>(create);
   static SendpayRoute? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  $1.Amount get msatoshi => $_getN(0);
-  @$pb.TagNumber(1)
-  set msatoshi($1.Amount v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasMsatoshi() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearMsatoshi() => clearField(1);
-  @$pb.TagNumber(1)
-  $1.Amount ensureMsatoshi() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  $core.List<$core.int> get id => $_getN(1);
+  $core.List<$core.int> get id => $_getN(0);
   @$pb.TagNumber(2)
   set id($core.List<$core.int> v) {
-    $_setBytes(1, v);
+    $_setBytes(0, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasId() => $_has(1);
+  $core.bool hasId() => $_has(0);
   @$pb.TagNumber(2)
   void clearId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.int get delay => $_getIZ(2);
+  $core.int get delay => $_getIZ(1);
   @$pb.TagNumber(3)
   set delay($core.int v) {
-    $_setUnsignedInt32(2, v);
+    $_setUnsignedInt32(1, v);
   }
 
   @$pb.TagNumber(3)
-  $core.bool hasDelay() => $_has(2);
+  $core.bool hasDelay() => $_has(1);
   @$pb.TagNumber(3)
   void clearDelay() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get channel => $_getSZ(3);
+  $core.String get channel => $_getSZ(2);
   @$pb.TagNumber(4)
   set channel($core.String v) {
-    $_setString(3, v);
+    $_setString(2, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasChannel() => $_has(3);
+  $core.bool hasChannel() => $_has(2);
   @$pb.TagNumber(4)
   void clearChannel() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $1.Amount get amountMsat => $_getN(3);
+  @$pb.TagNumber(5)
+  set amountMsat($1.Amount v) {
+    setField(5, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasAmountMsat() => $_has(3);
+  @$pb.TagNumber(5)
+  void clearAmountMsat() => clearField(5);
+  @$pb.TagNumber(5)
+  $1.Amount ensureAmountMsat() => $_ensure(3);
 }
 
 class ListchannelsRequest extends $pb.GeneratedMessage {
@@ -7792,12 +8047,6 @@ class InvoiceRequest extends $pb.GeneratedMessage {
               ? ''
               : 'cln'),
       createEmptyInstance: create)
-    ..aOM<$1.AmountOrAny>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'msatoshi',
-        subBuilder: $1.AmountOrAny.create)
     ..aOS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -7842,11 +8091,16 @@ class InvoiceRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'deschashonly')
+    ..aOM<$1.AmountOrAny>(
+        10,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'amountMsat',
+        subBuilder: $1.AmountOrAny.create)
     ..hasRequiredFields = false;
 
   InvoiceRequest._() : super();
   factory InvoiceRequest({
-    $1.AmountOrAny? msatoshi,
     $core.String? description,
     $core.String? label,
     $core.Iterable<$core.String>? fallbacks,
@@ -7855,11 +8109,9 @@ class InvoiceRequest extends $pb.GeneratedMessage {
     $fixnum.Int64? expiry,
     $core.bool? exposeprivatechannels,
     $core.bool? deschashonly,
+    $1.AmountOrAny? amountMsat,
   }) {
     final _result = create();
-    if (msatoshi != null) {
-      _result.msatoshi = msatoshi;
-    }
     if (description != null) {
       _result.description = description;
     }
@@ -7883,6 +8135,9 @@ class InvoiceRequest extends $pb.GeneratedMessage {
     }
     if (deschashonly != null) {
       _result.deschashonly = deschashonly;
+    }
+    if (amountMsat != null) {
+      _result.amountMsat = amountMsat;
     }
     return _result;
   }
@@ -7913,106 +8168,106 @@ class InvoiceRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<InvoiceRequest>(create);
   static InvoiceRequest? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  $1.AmountOrAny get msatoshi => $_getN(0);
-  @$pb.TagNumber(1)
-  set msatoshi($1.AmountOrAny v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasMsatoshi() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearMsatoshi() => clearField(1);
-  @$pb.TagNumber(1)
-  $1.AmountOrAny ensureMsatoshi() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  $core.String get description => $_getSZ(1);
+  $core.String get description => $_getSZ(0);
   @$pb.TagNumber(2)
   set description($core.String v) {
-    $_setString(1, v);
+    $_setString(0, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasDescription() => $_has(1);
+  $core.bool hasDescription() => $_has(0);
   @$pb.TagNumber(2)
   void clearDescription() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get label => $_getSZ(2);
+  $core.String get label => $_getSZ(1);
   @$pb.TagNumber(3)
   set label($core.String v) {
-    $_setString(2, v);
+    $_setString(1, v);
   }
 
   @$pb.TagNumber(3)
-  $core.bool hasLabel() => $_has(2);
+  $core.bool hasLabel() => $_has(1);
   @$pb.TagNumber(3)
   void clearLabel() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.List<$core.String> get fallbacks => $_getList(3);
+  $core.List<$core.String> get fallbacks => $_getList(2);
 
   @$pb.TagNumber(5)
-  $core.List<$core.int> get preimage => $_getN(4);
+  $core.List<$core.int> get preimage => $_getN(3);
   @$pb.TagNumber(5)
   set preimage($core.List<$core.int> v) {
-    $_setBytes(4, v);
+    $_setBytes(3, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasPreimage() => $_has(4);
+  $core.bool hasPreimage() => $_has(3);
   @$pb.TagNumber(5)
   void clearPreimage() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.int get cltv => $_getIZ(5);
+  $core.int get cltv => $_getIZ(4);
   @$pb.TagNumber(6)
   set cltv($core.int v) {
-    $_setUnsignedInt32(5, v);
+    $_setUnsignedInt32(4, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasCltv() => $_has(5);
+  $core.bool hasCltv() => $_has(4);
   @$pb.TagNumber(6)
   void clearCltv() => clearField(6);
 
   @$pb.TagNumber(7)
-  $fixnum.Int64 get expiry => $_getI64(6);
+  $fixnum.Int64 get expiry => $_getI64(5);
   @$pb.TagNumber(7)
   set expiry($fixnum.Int64 v) {
-    $_setInt64(6, v);
+    $_setInt64(5, v);
   }
 
   @$pb.TagNumber(7)
-  $core.bool hasExpiry() => $_has(6);
+  $core.bool hasExpiry() => $_has(5);
   @$pb.TagNumber(7)
   void clearExpiry() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.bool get exposeprivatechannels => $_getBF(7);
+  $core.bool get exposeprivatechannels => $_getBF(6);
   @$pb.TagNumber(8)
   set exposeprivatechannels($core.bool v) {
-    $_setBool(7, v);
+    $_setBool(6, v);
   }
 
   @$pb.TagNumber(8)
-  $core.bool hasExposeprivatechannels() => $_has(7);
+  $core.bool hasExposeprivatechannels() => $_has(6);
   @$pb.TagNumber(8)
   void clearExposeprivatechannels() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.bool get deschashonly => $_getBF(8);
+  $core.bool get deschashonly => $_getBF(7);
   @$pb.TagNumber(9)
   set deschashonly($core.bool v) {
-    $_setBool(8, v);
+    $_setBool(7, v);
   }
 
   @$pb.TagNumber(9)
-  $core.bool hasDeschashonly() => $_has(8);
+  $core.bool hasDeschashonly() => $_has(7);
   @$pb.TagNumber(9)
   void clearDeschashonly() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $1.AmountOrAny get amountMsat => $_getN(8);
+  @$pb.TagNumber(10)
+  set amountMsat($1.AmountOrAny v) {
+    setField(10, v);
+  }
+
+  @$pb.TagNumber(10)
+  $core.bool hasAmountMsat() => $_has(8);
+  @$pb.TagNumber(10)
+  void clearAmountMsat() => clearField(10);
+  @$pb.TagNumber(10)
+  $1.AmountOrAny ensureAmountMsat() => $_ensure(8);
 }
 
 class InvoiceResponse extends $pb.GeneratedMessage {
@@ -9097,12 +9352,6 @@ class SendonionRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'bolt11')
-    ..aOM<$1.Amount>(
-        8,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'msatoshi',
-        subBuilder: $1.Amount.create)
     ..a<$core.List<$core.int>>(
         9,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -9122,6 +9371,12 @@ class SendonionRequest extends $pb.GeneratedMessage {
             : 'groupid',
         $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOM<$1.Amount>(
+        12,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'amountMsat',
+        subBuilder: $1.Amount.create)
     ..hasRequiredFields = false;
 
   SendonionRequest._() : super();
@@ -9132,10 +9387,10 @@ class SendonionRequest extends $pb.GeneratedMessage {
     $core.Iterable<$core.List<$core.int>>? sharedSecrets,
     $core.int? partid,
     $core.String? bolt11,
-    $1.Amount? msatoshi,
     $core.List<$core.int>? destination,
     $core.List<$core.int>? localofferid,
     $fixnum.Int64? groupid,
+    $1.Amount? amountMsat,
   }) {
     final _result = create();
     if (onion != null) {
@@ -9156,9 +9411,6 @@ class SendonionRequest extends $pb.GeneratedMessage {
     if (bolt11 != null) {
       _result.bolt11 = bolt11;
     }
-    if (msatoshi != null) {
-      _result.msatoshi = msatoshi;
-    }
     if (destination != null) {
       _result.destination = destination;
     }
@@ -9167,6 +9419,9 @@ class SendonionRequest extends $pb.GeneratedMessage {
     }
     if (groupid != null) {
       _result.groupid = groupid;
+    }
+    if (amountMsat != null) {
+      _result.amountMsat = amountMsat;
     }
     return _result;
   }
@@ -9260,55 +9515,55 @@ class SendonionRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   void clearBolt11() => clearField(7);
 
-  @$pb.TagNumber(8)
-  $1.Amount get msatoshi => $_getN(6);
-  @$pb.TagNumber(8)
-  set msatoshi($1.Amount v) {
-    setField(8, v);
-  }
-
-  @$pb.TagNumber(8)
-  $core.bool hasMsatoshi() => $_has(6);
-  @$pb.TagNumber(8)
-  void clearMsatoshi() => clearField(8);
-  @$pb.TagNumber(8)
-  $1.Amount ensureMsatoshi() => $_ensure(6);
-
   @$pb.TagNumber(9)
-  $core.List<$core.int> get destination => $_getN(7);
+  $core.List<$core.int> get destination => $_getN(6);
   @$pb.TagNumber(9)
   set destination($core.List<$core.int> v) {
-    $_setBytes(7, v);
+    $_setBytes(6, v);
   }
 
   @$pb.TagNumber(9)
-  $core.bool hasDestination() => $_has(7);
+  $core.bool hasDestination() => $_has(6);
   @$pb.TagNumber(9)
   void clearDestination() => clearField(9);
 
   @$pb.TagNumber(10)
-  $core.List<$core.int> get localofferid => $_getN(8);
+  $core.List<$core.int> get localofferid => $_getN(7);
   @$pb.TagNumber(10)
   set localofferid($core.List<$core.int> v) {
-    $_setBytes(8, v);
+    $_setBytes(7, v);
   }
 
   @$pb.TagNumber(10)
-  $core.bool hasLocalofferid() => $_has(8);
+  $core.bool hasLocalofferid() => $_has(7);
   @$pb.TagNumber(10)
   void clearLocalofferid() => clearField(10);
 
   @$pb.TagNumber(11)
-  $fixnum.Int64 get groupid => $_getI64(9);
+  $fixnum.Int64 get groupid => $_getI64(8);
   @$pb.TagNumber(11)
   set groupid($fixnum.Int64 v) {
-    $_setInt64(9, v);
+    $_setInt64(8, v);
   }
 
   @$pb.TagNumber(11)
-  $core.bool hasGroupid() => $_has(9);
+  $core.bool hasGroupid() => $_has(8);
   @$pb.TagNumber(11)
   void clearGroupid() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $1.Amount get amountMsat => $_getN(9);
+  @$pb.TagNumber(12)
+  set amountMsat($1.Amount v) {
+    setField(12, v);
+  }
+
+  @$pb.TagNumber(12)
+  $core.bool hasAmountMsat() => $_has(9);
+  @$pb.TagNumber(12)
+  void clearAmountMsat() => clearField(12);
+  @$pb.TagNumber(12)
+  $1.Amount ensureAmountMsat() => $_ensure(9);
 }
 
 class SendonionResponse extends $pb.GeneratedMessage {
@@ -10825,12 +11080,6 @@ class ListtransactionsTransactionsOutputs extends $pb.GeneratedMessage {
             ? ''
             : 'index',
         $pb.PbFieldType.OU3)
-    ..aOM<$1.Amount>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'msat',
-        subBuilder: $1.Amount.create)
     ..a<$core.List<$core.int>>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -10858,23 +11107,26 @@ class ListtransactionsTransactionsOutputs extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'channel')
+    ..aOM<$1.Amount>(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'amountMsat',
+        subBuilder: $1.Amount.create)
     ..hasRequiredFields = false;
 
   ListtransactionsTransactionsOutputs._() : super();
   factory ListtransactionsTransactionsOutputs({
     $core.int? index,
-    $1.Amount? msat,
     $core.List<$core.int>? scriptPubKey,
     ListtransactionsTransactionsOutputs_ListtransactionsTransactionsOutputsType?
         itemType,
     $core.String? channel,
+    $1.Amount? amountMsat,
   }) {
     final _result = create();
     if (index != null) {
       _result.index = index;
-    }
-    if (msat != null) {
-      _result.msat = msat;
     }
     if (scriptPubKey != null) {
       _result.scriptPubKey = scriptPubKey;
@@ -10884,6 +11136,9 @@ class ListtransactionsTransactionsOutputs extends $pb.GeneratedMessage {
     }
     if (channel != null) {
       _result.channel = channel;
+    }
+    if (amountMsat != null) {
+      _result.amountMsat = amountMsat;
     }
     return _result;
   }
@@ -10932,35 +11187,21 @@ class ListtransactionsTransactionsOutputs extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearIndex() => clearField(1);
 
-  @$pb.TagNumber(2)
-  $1.Amount get msat => $_getN(1);
-  @$pb.TagNumber(2)
-  set msat($1.Amount v) {
-    setField(2, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasMsat() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearMsat() => clearField(2);
-  @$pb.TagNumber(2)
-  $1.Amount ensureMsat() => $_ensure(1);
-
   @$pb.TagNumber(3)
-  $core.List<$core.int> get scriptPubKey => $_getN(2);
+  $core.List<$core.int> get scriptPubKey => $_getN(1);
   @$pb.TagNumber(3)
   set scriptPubKey($core.List<$core.int> v) {
-    $_setBytes(2, v);
+    $_setBytes(1, v);
   }
 
   @$pb.TagNumber(3)
-  $core.bool hasScriptPubKey() => $_has(2);
+  $core.bool hasScriptPubKey() => $_has(1);
   @$pb.TagNumber(3)
   void clearScriptPubKey() => clearField(3);
 
   @$pb.TagNumber(4)
   ListtransactionsTransactionsOutputs_ListtransactionsTransactionsOutputsType
-      get itemType => $_getN(3);
+      get itemType => $_getN(2);
   @$pb.TagNumber(4)
   set itemType(
       ListtransactionsTransactionsOutputs_ListtransactionsTransactionsOutputsType
@@ -10969,21 +11210,35 @@ class ListtransactionsTransactionsOutputs extends $pb.GeneratedMessage {
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasItemType() => $_has(3);
+  $core.bool hasItemType() => $_has(2);
   @$pb.TagNumber(4)
   void clearItemType() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get channel => $_getSZ(4);
+  $core.String get channel => $_getSZ(3);
   @$pb.TagNumber(5)
   set channel($core.String v) {
-    $_setString(4, v);
+    $_setString(3, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasChannel() => $_has(4);
+  $core.bool hasChannel() => $_has(3);
   @$pb.TagNumber(5)
   void clearChannel() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $1.Amount get amountMsat => $_getN(4);
+  @$pb.TagNumber(6)
+  set amountMsat($1.Amount v) {
+    setField(6, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasAmountMsat() => $_has(4);
+  @$pb.TagNumber(6)
+  void clearAmountMsat() => clearField(6);
+  @$pb.TagNumber(6)
+  $1.Amount ensureAmountMsat() => $_ensure(4);
 }
 
 class PayRequest extends $pb.GeneratedMessage {
@@ -11001,12 +11256,6 @@ class PayRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'bolt11')
-    ..aOM<$1.Amount>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'msatoshi',
-        subBuilder: $1.Amount.create)
     ..aOS(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -11064,12 +11313,17 @@ class PayRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'description')
+    ..aOM<$1.Amount>(
+        13,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'amountMsat',
+        subBuilder: $1.Amount.create)
     ..hasRequiredFields = false;
 
   PayRequest._() : super();
   factory PayRequest({
     $core.String? bolt11,
-    $1.Amount? msatoshi,
     $core.String? label,
     $core.double? maxfeepercent,
     $core.int? retryFor,
@@ -11080,13 +11334,11 @@ class PayRequest extends $pb.GeneratedMessage {
     $core.Iterable<$core.String>? exclude,
     $1.Amount? maxfee,
     $core.String? description,
+    $1.Amount? amountMsat,
   }) {
     final _result = create();
     if (bolt11 != null) {
       _result.bolt11 = bolt11;
-    }
-    if (msatoshi != null) {
-      _result.msatoshi = msatoshi;
     }
     if (label != null) {
       _result.label = label;
@@ -11117,6 +11369,9 @@ class PayRequest extends $pb.GeneratedMessage {
     }
     if (description != null) {
       _result.description = description;
+    }
+    if (amountMsat != null) {
+      _result.amountMsat = amountMsat;
     }
     return _result;
   }
@@ -11158,134 +11413,134 @@ class PayRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearBolt11() => clearField(1);
 
-  @$pb.TagNumber(2)
-  $1.Amount get msatoshi => $_getN(1);
-  @$pb.TagNumber(2)
-  set msatoshi($1.Amount v) {
-    setField(2, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasMsatoshi() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearMsatoshi() => clearField(2);
-  @$pb.TagNumber(2)
-  $1.Amount ensureMsatoshi() => $_ensure(1);
-
   @$pb.TagNumber(3)
-  $core.String get label => $_getSZ(2);
+  $core.String get label => $_getSZ(1);
   @$pb.TagNumber(3)
   set label($core.String v) {
-    $_setString(2, v);
+    $_setString(1, v);
   }
 
   @$pb.TagNumber(3)
-  $core.bool hasLabel() => $_has(2);
+  $core.bool hasLabel() => $_has(1);
   @$pb.TagNumber(3)
   void clearLabel() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.double get maxfeepercent => $_getN(3);
+  $core.double get maxfeepercent => $_getN(2);
   @$pb.TagNumber(4)
   set maxfeepercent($core.double v) {
-    $_setDouble(3, v);
+    $_setDouble(2, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasMaxfeepercent() => $_has(3);
+  $core.bool hasMaxfeepercent() => $_has(2);
   @$pb.TagNumber(4)
   void clearMaxfeepercent() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.int get retryFor => $_getIZ(4);
+  $core.int get retryFor => $_getIZ(3);
   @$pb.TagNumber(5)
   set retryFor($core.int v) {
-    $_setUnsignedInt32(4, v);
+    $_setUnsignedInt32(3, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasRetryFor() => $_has(4);
+  $core.bool hasRetryFor() => $_has(3);
   @$pb.TagNumber(5)
   void clearRetryFor() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.int get maxdelay => $_getIZ(5);
+  $core.int get maxdelay => $_getIZ(4);
   @$pb.TagNumber(6)
   set maxdelay($core.int v) {
-    $_setUnsignedInt32(5, v);
+    $_setUnsignedInt32(4, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasMaxdelay() => $_has(5);
+  $core.bool hasMaxdelay() => $_has(4);
   @$pb.TagNumber(6)
   void clearMaxdelay() => clearField(6);
 
   @$pb.TagNumber(7)
-  $1.Amount get exemptfee => $_getN(6);
+  $1.Amount get exemptfee => $_getN(5);
   @$pb.TagNumber(7)
   set exemptfee($1.Amount v) {
     setField(7, v);
   }
 
   @$pb.TagNumber(7)
-  $core.bool hasExemptfee() => $_has(6);
+  $core.bool hasExemptfee() => $_has(5);
   @$pb.TagNumber(7)
   void clearExemptfee() => clearField(7);
   @$pb.TagNumber(7)
-  $1.Amount ensureExemptfee() => $_ensure(6);
+  $1.Amount ensureExemptfee() => $_ensure(5);
 
   @$pb.TagNumber(8)
-  $core.double get riskfactor => $_getN(7);
+  $core.double get riskfactor => $_getN(6);
   @$pb.TagNumber(8)
   set riskfactor($core.double v) {
-    $_setDouble(7, v);
+    $_setDouble(6, v);
   }
 
   @$pb.TagNumber(8)
-  $core.bool hasRiskfactor() => $_has(7);
+  $core.bool hasRiskfactor() => $_has(6);
   @$pb.TagNumber(8)
   void clearRiskfactor() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.List<$core.int> get localofferid => $_getN(8);
+  $core.List<$core.int> get localofferid => $_getN(7);
   @$pb.TagNumber(9)
   set localofferid($core.List<$core.int> v) {
-    $_setBytes(8, v);
+    $_setBytes(7, v);
   }
 
   @$pb.TagNumber(9)
-  $core.bool hasLocalofferid() => $_has(8);
+  $core.bool hasLocalofferid() => $_has(7);
   @$pb.TagNumber(9)
   void clearLocalofferid() => clearField(9);
 
   @$pb.TagNumber(10)
-  $core.List<$core.String> get exclude => $_getList(9);
+  $core.List<$core.String> get exclude => $_getList(8);
 
   @$pb.TagNumber(11)
-  $1.Amount get maxfee => $_getN(10);
+  $1.Amount get maxfee => $_getN(9);
   @$pb.TagNumber(11)
   set maxfee($1.Amount v) {
     setField(11, v);
   }
 
   @$pb.TagNumber(11)
-  $core.bool hasMaxfee() => $_has(10);
+  $core.bool hasMaxfee() => $_has(9);
   @$pb.TagNumber(11)
   void clearMaxfee() => clearField(11);
   @$pb.TagNumber(11)
-  $1.Amount ensureMaxfee() => $_ensure(10);
+  $1.Amount ensureMaxfee() => $_ensure(9);
 
   @$pb.TagNumber(12)
-  $core.String get description => $_getSZ(11);
+  $core.String get description => $_getSZ(10);
   @$pb.TagNumber(12)
   set description($core.String v) {
-    $_setString(11, v);
+    $_setString(10, v);
   }
 
   @$pb.TagNumber(12)
-  $core.bool hasDescription() => $_has(11);
+  $core.bool hasDescription() => $_has(10);
   @$pb.TagNumber(12)
   void clearDescription() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $1.Amount get amountMsat => $_getN(11);
+  @$pb.TagNumber(13)
+  set amountMsat($1.Amount v) {
+    setField(13, v);
+  }
+
+  @$pb.TagNumber(13)
+  $core.bool hasAmountMsat() => $_has(11);
+  @$pb.TagNumber(13)
+  void clearAmountMsat() => clearField(13);
+  @$pb.TagNumber(13)
+  $1.Amount ensureAmountMsat() => $_ensure(11);
 }
 
 class PayResponse extends $pb.GeneratedMessage {
@@ -13658,12 +13913,6 @@ class KeysendRequest extends $pb.GeneratedMessage {
             ? ''
             : 'destination',
         $pb.PbFieldType.OY)
-    ..aOM<$1.Amount>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'msatoshi',
-        subBuilder: $1.Amount.create)
     ..aOS(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -13699,25 +13948,28 @@ class KeysendRequest extends $pb.GeneratedMessage {
             ? ''
             : 'routehints',
         subBuilder: $1.RoutehintList.create)
+    ..aOM<$1.Amount>(
+        10,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'amountMsat',
+        subBuilder: $1.Amount.create)
     ..hasRequiredFields = false;
 
   KeysendRequest._() : super();
   factory KeysendRequest({
     $core.List<$core.int>? destination,
-    $1.Amount? msatoshi,
     $core.String? label,
     $core.double? maxfeepercent,
     $core.int? retryFor,
     $core.int? maxdelay,
     $1.Amount? exemptfee,
     $1.RoutehintList? routehints,
+    $1.Amount? amountMsat,
   }) {
     final _result = create();
     if (destination != null) {
       _result.destination = destination;
-    }
-    if (msatoshi != null) {
-      _result.msatoshi = msatoshi;
     }
     if (label != null) {
       _result.label = label;
@@ -13736,6 +13988,9 @@ class KeysendRequest extends $pb.GeneratedMessage {
     }
     if (routehints != null) {
       _result.routehints = routehints;
+    }
+    if (amountMsat != null) {
+      _result.amountMsat = amountMsat;
     }
     return _result;
   }
@@ -13778,95 +14033,95 @@ class KeysendRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDestination() => clearField(1);
 
-  @$pb.TagNumber(2)
-  $1.Amount get msatoshi => $_getN(1);
-  @$pb.TagNumber(2)
-  set msatoshi($1.Amount v) {
-    setField(2, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasMsatoshi() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearMsatoshi() => clearField(2);
-  @$pb.TagNumber(2)
-  $1.Amount ensureMsatoshi() => $_ensure(1);
-
   @$pb.TagNumber(3)
-  $core.String get label => $_getSZ(2);
+  $core.String get label => $_getSZ(1);
   @$pb.TagNumber(3)
   set label($core.String v) {
-    $_setString(2, v);
+    $_setString(1, v);
   }
 
   @$pb.TagNumber(3)
-  $core.bool hasLabel() => $_has(2);
+  $core.bool hasLabel() => $_has(1);
   @$pb.TagNumber(3)
   void clearLabel() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.double get maxfeepercent => $_getN(3);
+  $core.double get maxfeepercent => $_getN(2);
   @$pb.TagNumber(4)
   set maxfeepercent($core.double v) {
-    $_setDouble(3, v);
+    $_setDouble(2, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasMaxfeepercent() => $_has(3);
+  $core.bool hasMaxfeepercent() => $_has(2);
   @$pb.TagNumber(4)
   void clearMaxfeepercent() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.int get retryFor => $_getIZ(4);
+  $core.int get retryFor => $_getIZ(3);
   @$pb.TagNumber(5)
   set retryFor($core.int v) {
-    $_setUnsignedInt32(4, v);
+    $_setUnsignedInt32(3, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasRetryFor() => $_has(4);
+  $core.bool hasRetryFor() => $_has(3);
   @$pb.TagNumber(5)
   void clearRetryFor() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.int get maxdelay => $_getIZ(5);
+  $core.int get maxdelay => $_getIZ(4);
   @$pb.TagNumber(6)
   set maxdelay($core.int v) {
-    $_setUnsignedInt32(5, v);
+    $_setUnsignedInt32(4, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasMaxdelay() => $_has(5);
+  $core.bool hasMaxdelay() => $_has(4);
   @$pb.TagNumber(6)
   void clearMaxdelay() => clearField(6);
 
   @$pb.TagNumber(7)
-  $1.Amount get exemptfee => $_getN(6);
+  $1.Amount get exemptfee => $_getN(5);
   @$pb.TagNumber(7)
   set exemptfee($1.Amount v) {
     setField(7, v);
   }
 
   @$pb.TagNumber(7)
-  $core.bool hasExemptfee() => $_has(6);
+  $core.bool hasExemptfee() => $_has(5);
   @$pb.TagNumber(7)
   void clearExemptfee() => clearField(7);
   @$pb.TagNumber(7)
-  $1.Amount ensureExemptfee() => $_ensure(6);
+  $1.Amount ensureExemptfee() => $_ensure(5);
 
   @$pb.TagNumber(8)
-  $1.RoutehintList get routehints => $_getN(7);
+  $1.RoutehintList get routehints => $_getN(6);
   @$pb.TagNumber(8)
   set routehints($1.RoutehintList v) {
     setField(8, v);
   }
 
   @$pb.TagNumber(8)
-  $core.bool hasRoutehints() => $_has(7);
+  $core.bool hasRoutehints() => $_has(6);
   @$pb.TagNumber(8)
   void clearRoutehints() => clearField(8);
   @$pb.TagNumber(8)
-  $1.RoutehintList ensureRoutehints() => $_ensure(7);
+  $1.RoutehintList ensureRoutehints() => $_ensure(6);
+
+  @$pb.TagNumber(10)
+  $1.Amount get amountMsat => $_getN(7);
+  @$pb.TagNumber(10)
+  set amountMsat($1.Amount v) {
+    setField(10, v);
+  }
+
+  @$pb.TagNumber(10)
+  $core.bool hasAmountMsat() => $_has(7);
+  @$pb.TagNumber(10)
+  void clearAmountMsat() => clearField(10);
+  @$pb.TagNumber(10)
+  $1.Amount ensureAmountMsat() => $_ensure(7);
 }
 
 class KeysendResponse extends $pb.GeneratedMessage {
@@ -17047,6 +17302,469 @@ class FeeratesOnchain_fee_estimates extends $pb.GeneratedMessage {
   void clearHtlcSuccessSatoshis() => clearField(5);
 }
 
+class FundchannelRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'FundchannelRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cln'),
+      createEmptyInstance: create)
+    ..aOM<$1.AmountOrAll>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'amount',
+        subBuilder: $1.AmountOrAll.create)
+    ..aOM<$1.Feerate>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'feerate',
+        subBuilder: $1.Feerate.create)
+    ..aOB(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'announce')
+    ..aOM<$1.Amount>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'pushMsat',
+        subBuilder: $1.Amount.create)
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'closeTo')
+    ..aOM<$1.Amount>(
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'requestAmt',
+        subBuilder: $1.Amount.create)
+    ..aOS(
+        8,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'compactLease')
+    ..a<$core.List<$core.int>>(
+        9,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'id',
+        $pb.PbFieldType.OY)
+    ..a<$core.int>(
+        10,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'minconf',
+        $pb.PbFieldType.OU3)
+    ..pc<$1.Outpoint>(
+        11,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'utxos',
+        $pb.PbFieldType.PM,
+        subBuilder: $1.Outpoint.create)
+    ..a<$core.int>(
+        12,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'mindepth',
+        $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false;
+
+  FundchannelRequest._() : super();
+  factory FundchannelRequest({
+    $1.AmountOrAll? amount,
+    $1.Feerate? feerate,
+    $core.bool? announce,
+    $1.Amount? pushMsat,
+    $core.String? closeTo,
+    $1.Amount? requestAmt,
+    $core.String? compactLease,
+    $core.List<$core.int>? id,
+    $core.int? minconf,
+    $core.Iterable<$1.Outpoint>? utxos,
+    $core.int? mindepth,
+  }) {
+    final _result = create();
+    if (amount != null) {
+      _result.amount = amount;
+    }
+    if (feerate != null) {
+      _result.feerate = feerate;
+    }
+    if (announce != null) {
+      _result.announce = announce;
+    }
+    if (pushMsat != null) {
+      _result.pushMsat = pushMsat;
+    }
+    if (closeTo != null) {
+      _result.closeTo = closeTo;
+    }
+    if (requestAmt != null) {
+      _result.requestAmt = requestAmt;
+    }
+    if (compactLease != null) {
+      _result.compactLease = compactLease;
+    }
+    if (id != null) {
+      _result.id = id;
+    }
+    if (minconf != null) {
+      _result.minconf = minconf;
+    }
+    if (utxos != null) {
+      _result.utxos.addAll(utxos);
+    }
+    if (mindepth != null) {
+      _result.mindepth = mindepth;
+    }
+    return _result;
+  }
+  factory FundchannelRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory FundchannelRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  FundchannelRequest clone() => FundchannelRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  FundchannelRequest copyWith(void Function(FundchannelRequest) updates) =>
+      super.copyWith((message) => updates(message as FundchannelRequest))
+          as FundchannelRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FundchannelRequest create() => FundchannelRequest._();
+  FundchannelRequest createEmptyInstance() => create();
+  static $pb.PbList<FundchannelRequest> createRepeated() =>
+      $pb.PbList<FundchannelRequest>();
+  @$core.pragma('dart2js:noInline')
+  static FundchannelRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<FundchannelRequest>(create);
+  static FundchannelRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $1.AmountOrAll get amount => $_getN(0);
+  @$pb.TagNumber(1)
+  set amount($1.AmountOrAll v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasAmount() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAmount() => clearField(1);
+  @$pb.TagNumber(1)
+  $1.AmountOrAll ensureAmount() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $1.Feerate get feerate => $_getN(1);
+  @$pb.TagNumber(2)
+  set feerate($1.Feerate v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasFeerate() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFeerate() => clearField(2);
+  @$pb.TagNumber(2)
+  $1.Feerate ensureFeerate() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.bool get announce => $_getBF(2);
+  @$pb.TagNumber(3)
+  set announce($core.bool v) {
+    $_setBool(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasAnnounce() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAnnounce() => clearField(3);
+
+  @$pb.TagNumber(5)
+  $1.Amount get pushMsat => $_getN(3);
+  @$pb.TagNumber(5)
+  set pushMsat($1.Amount v) {
+    setField(5, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasPushMsat() => $_has(3);
+  @$pb.TagNumber(5)
+  void clearPushMsat() => clearField(5);
+  @$pb.TagNumber(5)
+  $1.Amount ensurePushMsat() => $_ensure(3);
+
+  @$pb.TagNumber(6)
+  $core.String get closeTo => $_getSZ(4);
+  @$pb.TagNumber(6)
+  set closeTo($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasCloseTo() => $_has(4);
+  @$pb.TagNumber(6)
+  void clearCloseTo() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $1.Amount get requestAmt => $_getN(5);
+  @$pb.TagNumber(7)
+  set requestAmt($1.Amount v) {
+    setField(7, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasRequestAmt() => $_has(5);
+  @$pb.TagNumber(7)
+  void clearRequestAmt() => clearField(7);
+  @$pb.TagNumber(7)
+  $1.Amount ensureRequestAmt() => $_ensure(5);
+
+  @$pb.TagNumber(8)
+  $core.String get compactLease => $_getSZ(6);
+  @$pb.TagNumber(8)
+  set compactLease($core.String v) {
+    $_setString(6, v);
+  }
+
+  @$pb.TagNumber(8)
+  $core.bool hasCompactLease() => $_has(6);
+  @$pb.TagNumber(8)
+  void clearCompactLease() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.List<$core.int> get id => $_getN(7);
+  @$pb.TagNumber(9)
+  set id($core.List<$core.int> v) {
+    $_setBytes(7, v);
+  }
+
+  @$pb.TagNumber(9)
+  $core.bool hasId() => $_has(7);
+  @$pb.TagNumber(9)
+  void clearId() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.int get minconf => $_getIZ(8);
+  @$pb.TagNumber(10)
+  set minconf($core.int v) {
+    $_setUnsignedInt32(8, v);
+  }
+
+  @$pb.TagNumber(10)
+  $core.bool hasMinconf() => $_has(8);
+  @$pb.TagNumber(10)
+  void clearMinconf() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.List<$1.Outpoint> get utxos => $_getList(9);
+
+  @$pb.TagNumber(12)
+  $core.int get mindepth => $_getIZ(10);
+  @$pb.TagNumber(12)
+  set mindepth($core.int v) {
+    $_setUnsignedInt32(10, v);
+  }
+
+  @$pb.TagNumber(12)
+  $core.bool hasMindepth() => $_has(10);
+  @$pb.TagNumber(12)
+  void clearMindepth() => clearField(12);
+}
+
+class FundchannelResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'FundchannelResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cln'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'tx',
+        $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'txid',
+        $pb.PbFieldType.OY)
+    ..a<$core.int>(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'outnum',
+        $pb.PbFieldType.OU3)
+    ..a<$core.List<$core.int>>(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'channelId',
+        $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'closeTo',
+        $pb.PbFieldType.OY)
+    ..a<$core.int>(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'mindepth',
+        $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false;
+
+  FundchannelResponse._() : super();
+  factory FundchannelResponse({
+    $core.List<$core.int>? tx,
+    $core.List<$core.int>? txid,
+    $core.int? outnum,
+    $core.List<$core.int>? channelId,
+    $core.List<$core.int>? closeTo,
+    $core.int? mindepth,
+  }) {
+    final _result = create();
+    if (tx != null) {
+      _result.tx = tx;
+    }
+    if (txid != null) {
+      _result.txid = txid;
+    }
+    if (outnum != null) {
+      _result.outnum = outnum;
+    }
+    if (channelId != null) {
+      _result.channelId = channelId;
+    }
+    if (closeTo != null) {
+      _result.closeTo = closeTo;
+    }
+    if (mindepth != null) {
+      _result.mindepth = mindepth;
+    }
+    return _result;
+  }
+  factory FundchannelResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory FundchannelResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  FundchannelResponse clone() => FundchannelResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  FundchannelResponse copyWith(void Function(FundchannelResponse) updates) =>
+      super.copyWith((message) => updates(message as FundchannelResponse))
+          as FundchannelResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FundchannelResponse create() => FundchannelResponse._();
+  FundchannelResponse createEmptyInstance() => create();
+  static $pb.PbList<FundchannelResponse> createRepeated() =>
+      $pb.PbList<FundchannelResponse>();
+  @$core.pragma('dart2js:noInline')
+  static FundchannelResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<FundchannelResponse>(create);
+  static FundchannelResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get tx => $_getN(0);
+  @$pb.TagNumber(1)
+  set tx($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasTx() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTx() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get txid => $_getN(1);
+  @$pb.TagNumber(2)
+  set txid($core.List<$core.int> v) {
+    $_setBytes(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasTxid() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTxid() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get outnum => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set outnum($core.int v) {
+    $_setUnsignedInt32(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasOutnum() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearOutnum() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<$core.int> get channelId => $_getN(3);
+  @$pb.TagNumber(4)
+  set channelId($core.List<$core.int> v) {
+    $_setBytes(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasChannelId() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearChannelId() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.List<$core.int> get closeTo => $_getN(4);
+  @$pb.TagNumber(5)
+  set closeTo($core.List<$core.int> v) {
+    $_setBytes(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasCloseTo() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearCloseTo() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.int get mindepth => $_getIZ(5);
+  @$pb.TagNumber(6)
+  set mindepth($core.int v) {
+    $_setUnsignedInt32(5, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasMindepth() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearMindepth() => clearField(6);
+}
+
 class GetrouteRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
@@ -17063,12 +17781,6 @@ class GetrouteRequest extends $pb.GeneratedMessage {
             ? ''
             : 'id',
         $pb.PbFieldType.OY)
-    ..aOM<$1.Amount>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'msatoshi',
-        subBuilder: $1.Amount.create)
     ..a<$fixnum.Int64>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -17105,25 +17817,28 @@ class GetrouteRequest extends $pb.GeneratedMessage {
             ? ''
             : 'maxhops',
         $pb.PbFieldType.OU3)
+    ..aOM<$1.Amount>(
+        9,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'amountMsat',
+        subBuilder: $1.Amount.create)
     ..hasRequiredFields = false;
 
   GetrouteRequest._() : super();
   factory GetrouteRequest({
     $core.List<$core.int>? id,
-    $1.Amount? msatoshi,
     $fixnum.Int64? riskfactor,
     $core.double? cltv,
     $core.List<$core.int>? fromid,
     $core.int? fuzzpercent,
     $core.Iterable<$core.String>? exclude,
     $core.int? maxhops,
+    $1.Amount? amountMsat,
   }) {
     final _result = create();
     if (id != null) {
       _result.id = id;
-    }
-    if (msatoshi != null) {
-      _result.msatoshi = msatoshi;
     }
     if (riskfactor != null) {
       _result.riskfactor = riskfactor;
@@ -17142,6 +17857,9 @@ class GetrouteRequest extends $pb.GeneratedMessage {
     }
     if (maxhops != null) {
       _result.maxhops = maxhops;
+    }
+    if (amountMsat != null) {
+      _result.amountMsat = amountMsat;
     }
     return _result;
   }
@@ -17184,82 +17902,82 @@ class GetrouteRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearId() => clearField(1);
 
-  @$pb.TagNumber(2)
-  $1.Amount get msatoshi => $_getN(1);
-  @$pb.TagNumber(2)
-  set msatoshi($1.Amount v) {
-    setField(2, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasMsatoshi() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearMsatoshi() => clearField(2);
-  @$pb.TagNumber(2)
-  $1.Amount ensureMsatoshi() => $_ensure(1);
-
   @$pb.TagNumber(3)
-  $fixnum.Int64 get riskfactor => $_getI64(2);
+  $fixnum.Int64 get riskfactor => $_getI64(1);
   @$pb.TagNumber(3)
   set riskfactor($fixnum.Int64 v) {
-    $_setInt64(2, v);
+    $_setInt64(1, v);
   }
 
   @$pb.TagNumber(3)
-  $core.bool hasRiskfactor() => $_has(2);
+  $core.bool hasRiskfactor() => $_has(1);
   @$pb.TagNumber(3)
   void clearRiskfactor() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.double get cltv => $_getN(3);
+  $core.double get cltv => $_getN(2);
   @$pb.TagNumber(4)
   set cltv($core.double v) {
-    $_setDouble(3, v);
+    $_setDouble(2, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasCltv() => $_has(3);
+  $core.bool hasCltv() => $_has(2);
   @$pb.TagNumber(4)
   void clearCltv() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.List<$core.int> get fromid => $_getN(4);
+  $core.List<$core.int> get fromid => $_getN(3);
   @$pb.TagNumber(5)
   set fromid($core.List<$core.int> v) {
-    $_setBytes(4, v);
+    $_setBytes(3, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasFromid() => $_has(4);
+  $core.bool hasFromid() => $_has(3);
   @$pb.TagNumber(5)
   void clearFromid() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.int get fuzzpercent => $_getIZ(5);
+  $core.int get fuzzpercent => $_getIZ(4);
   @$pb.TagNumber(6)
   set fuzzpercent($core.int v) {
-    $_setUnsignedInt32(5, v);
+    $_setUnsignedInt32(4, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasFuzzpercent() => $_has(5);
+  $core.bool hasFuzzpercent() => $_has(4);
   @$pb.TagNumber(6)
   void clearFuzzpercent() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.List<$core.String> get exclude => $_getList(6);
+  $core.List<$core.String> get exclude => $_getList(5);
 
   @$pb.TagNumber(8)
-  $core.int get maxhops => $_getIZ(7);
+  $core.int get maxhops => $_getIZ(6);
   @$pb.TagNumber(8)
   set maxhops($core.int v) {
-    $_setUnsignedInt32(7, v);
+    $_setUnsignedInt32(6, v);
   }
 
   @$pb.TagNumber(8)
-  $core.bool hasMaxhops() => $_has(7);
+  $core.bool hasMaxhops() => $_has(6);
   @$pb.TagNumber(8)
   void clearMaxhops() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $1.Amount get amountMsat => $_getN(7);
+  @$pb.TagNumber(9)
+  set amountMsat($1.Amount v) {
+    setField(9, v);
+  }
+
+  @$pb.TagNumber(9)
+  $core.bool hasAmountMsat() => $_has(7);
+  @$pb.TagNumber(9)
+  void clearAmountMsat() => clearField(9);
+  @$pb.TagNumber(9)
+  $1.Amount ensureAmountMsat() => $_ensure(7);
 }
 
 class GetrouteResponse extends $pb.GeneratedMessage {
@@ -18754,4 +19472,87 @@ class SignmessageResponse extends $pb.GeneratedMessage {
   $core.bool hasZbase() => $_has(2);
   @$pb.TagNumber(3)
   void clearZbase() => clearField(3);
+}
+
+class StopRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'StopRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cln'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  StopRequest._() : super();
+  factory StopRequest() => create();
+  factory StopRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory StopRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  StopRequest clone() => StopRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  StopRequest copyWith(void Function(StopRequest) updates) =>
+      super.copyWith((message) => updates(message as StopRequest))
+          as StopRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static StopRequest create() => StopRequest._();
+  StopRequest createEmptyInstance() => create();
+  static $pb.PbList<StopRequest> createRepeated() => $pb.PbList<StopRequest>();
+  @$core.pragma('dart2js:noInline')
+  static StopRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<StopRequest>(create);
+  static StopRequest? _defaultInstance;
+}
+
+class StopResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'StopResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cln'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  StopResponse._() : super();
+  factory StopResponse() => create();
+  factory StopResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory StopResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  StopResponse clone() => StopResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  StopResponse copyWith(void Function(StopResponse) updates) =>
+      super.copyWith((message) => updates(message as StopResponse))
+          as StopResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static StopResponse create() => StopResponse._();
+  StopResponse createEmptyInstance() => create();
+  static $pb.PbList<StopResponse> createRepeated() =>
+      $pb.PbList<StopResponse>();
+  @$core.pragma('dart2js:noInline')
+  static StopResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<StopResponse>(create);
+  static StopResponse? _defaultInstance;
 }

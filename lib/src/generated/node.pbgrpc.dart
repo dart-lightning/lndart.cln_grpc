@@ -243,6 +243,12 @@ class NodeClient extends $grpc.Client {
           ($0.FeeratesRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.FeeratesResponse.fromBuffer(value));
+  static final _$fundChannel =
+      $grpc.ClientMethod<$0.FundchannelRequest, $0.FundchannelResponse>(
+          '/cln.Node/FundChannel',
+          ($0.FundchannelRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.FundchannelResponse.fromBuffer(value));
   static final _$getRoute =
       $grpc.ClientMethod<$0.GetrouteRequest, $0.GetrouteResponse>(
           '/cln.Node/GetRoute',
@@ -271,6 +277,10 @@ class NodeClient extends $grpc.Client {
           ($0.SignmessageRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.SignmessageResponse.fromBuffer(value));
+  static final _$stop = $grpc.ClientMethod<$0.StopRequest, $0.StopResponse>(
+      '/cln.Node/Stop',
+      ($0.StopRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.StopResponse.fromBuffer(value));
 
   NodeClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -497,6 +507,12 @@ class NodeClient extends $grpc.Client {
     return $createUnaryCall(_$feerates, request, options: options);
   }
 
+  $grpc.ResponseFuture<$0.FundchannelResponse> fundChannel(
+      $0.FundchannelRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$fundChannel, request, options: options);
+  }
+
   $grpc.ResponseFuture<$0.GetrouteResponse> getRoute($0.GetrouteRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getRoute, request, options: options);
@@ -522,6 +538,11 @@ class NodeClient extends $grpc.Client {
       $0.SignmessageRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$signMessage, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.StopResponse> stop($0.StopRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$stop, request, options: options);
   }
 }
 
@@ -830,6 +851,15 @@ abstract class NodeServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.FeeratesRequest.fromBuffer(value),
         ($0.FeeratesResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$0.FundchannelRequest, $0.FundchannelResponse>(
+            'FundChannel',
+            fundChannel_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $0.FundchannelRequest.fromBuffer(value),
+            ($0.FundchannelResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.GetrouteRequest, $0.GetrouteResponse>(
         'GetRoute',
         getRoute_Pre,
@@ -869,6 +899,13 @@ abstract class NodeServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $0.SignmessageRequest.fromBuffer(value),
             ($0.SignmessageResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.StopRequest, $0.StopResponse>(
+        'Stop',
+        stop_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.StopRequest.fromBuffer(value),
+        ($0.StopResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.GetinfoResponse> getinfo_Pre(
@@ -1077,6 +1114,11 @@ abstract class NodeServiceBase extends $grpc.Service {
     return feerates(call, await request);
   }
 
+  $async.Future<$0.FundchannelResponse> fundChannel_Pre($grpc.ServiceCall call,
+      $async.Future<$0.FundchannelRequest> request) async {
+    return fundChannel(call, await request);
+  }
+
   $async.Future<$0.GetrouteResponse> getRoute_Pre(
       $grpc.ServiceCall call, $async.Future<$0.GetrouteRequest> request) async {
     return getRoute(call, await request);
@@ -1101,6 +1143,11 @@ abstract class NodeServiceBase extends $grpc.Service {
   $async.Future<$0.SignmessageResponse> signMessage_Pre($grpc.ServiceCall call,
       $async.Future<$0.SignmessageRequest> request) async {
     return signMessage(call, await request);
+  }
+
+  $async.Future<$0.StopResponse> stop_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.StopRequest> request) async {
+    return stop(call, await request);
   }
 
   $async.Future<$0.GetinfoResponse> getinfo(
@@ -1181,6 +1228,8 @@ abstract class NodeServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.DisconnectRequest request);
   $async.Future<$0.FeeratesResponse> feerates(
       $grpc.ServiceCall call, $0.FeeratesRequest request);
+  $async.Future<$0.FundchannelResponse> fundChannel(
+      $grpc.ServiceCall call, $0.FundchannelRequest request);
   $async.Future<$0.GetrouteResponse> getRoute(
       $grpc.ServiceCall call, $0.GetrouteRequest request);
   $async.Future<$0.ListforwardsResponse> listForwards(
@@ -1191,4 +1240,6 @@ abstract class NodeServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.PingRequest request);
   $async.Future<$0.SignmessageResponse> signMessage(
       $grpc.ServiceCall call, $0.SignmessageRequest request);
+  $async.Future<$0.StopResponse> stop(
+      $grpc.ServiceCall call, $0.StopRequest request);
 }
