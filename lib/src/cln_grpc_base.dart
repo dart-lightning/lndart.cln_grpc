@@ -97,6 +97,7 @@ class GRPCClient extends LightningClient {
       {required ListfundsRequest params, T Function(Map)? onDecode}) async {
     /// request to server
     var response = await stub.listFunds(params);
+    LogManager.getInstance.debug("response received by GRPC server: $response");
     if (onDecode != null) {
       return onDecode(toEncode(response.toProto3Json()));
     }
