@@ -156,7 +156,7 @@ void main() {
       };
       var boltString = await unixCient.simpleCall("invoice", params: params);
       try {
-        var response = await client.call<PayProxy, PayResponse>(
+        var _ = await client.call<PayProxy, PayResponse>(
             method: "pay",
             params: PayProxy.build(invoice: boltString["bolt11"]));
         await client.close();
